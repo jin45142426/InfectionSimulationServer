@@ -14,6 +14,7 @@ namespace Server
 {
 	public class ClientSession : PacketSession
 	{
+		//User 정보도 보관
 		public Player MyPlayer { get; set; }
 		public int SessionId { get; set; }
 
@@ -35,20 +36,6 @@ namespace Server
 		public override void OnConnected(EndPoint endPoint)
 		{
 			Console.WriteLine($"OnConnected : {endPoint}");
-
-			MyPlayer = ObjectManager.Instance.Add<Player>();
-			{
-				MyPlayer.Info.Name = $"Player_{MyPlayer.Info.ObjectId}";
-				MyPlayer.Info.PosInfo.State = CreatureState.Idle;
-				MyPlayer.Info.PosInfo.PosX = 0;
-				MyPlayer.Info.PosInfo.PosY = 0;
-				MyPlayer.Info.PosInfo.PosZ = 0;
-
-				MyPlayer.Session = this;
-			}
-
-			GameRoom room = RoomManager.Instance.Find(1);
-			room.Push(room.EnterGame, MyPlayer);
 		}
 
 		public override void OnRecvPacket(ArraySegment<byte> buffer)

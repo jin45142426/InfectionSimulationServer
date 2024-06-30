@@ -9,39 +9,45 @@ namespace Server.Game
 	public class GameRoom : JobSerializer
 	{
 		public int RoomId { get; set; }
-
+		public int ScenarioProcess { get; set; } = 0;
 		Dictionary<int, Player> _players = new Dictionary<int, Player>();
-
-		public void Update()
-		{
-			Flush();
-		}
 
 		public void EnterGame(GameObject gameObject)
 		{
 			if (gameObject == null)
 				return;
 
-			GameObjectType type = ObjectManager.GetObjectTypeById(gameObject.Id);
+			GameObjectType type = ObjectManager.GetObjectTypeById(gameObject.ObjectId);
 
 			if (type == GameObjectType.Player)
 			{
 				Player player = gameObject as Player;
-				_players.Add(gameObject.Id, player);
+				_players.Add(gameObject.ObjectId, player);
 				player.Room = this;
 
 
 				// 본인한테 정보 전송
 				{
 					S_EnterGame enterPacket = new S_EnterGame();
-					enterPacket.Player = player.Info;
+					enterPacket.Player = new ObjectInfo();
+					enterPacket.Player.ObjectId = player.Info.ObjectId;
+					enterPacket.Player.MoveInfo = player.MoveInfo;
+					enterPacket.Player.UserInfo = player.UserInfo;
+					enterPacket.Player.PosInfo = player.PosInfo;
 					player.Session.Send(enterPacket);
 
 					S_Spawn spawnPacket = new S_Spawn();
 					foreach (Player p in _players.Values)
 					{
 						if (player != p)
-							spawnPacket.Objects.Add(p.Info);
+                        {
+							ObjectInfo info = new ObjectInfo();
+							info.ObjectId = p.ObjectId;
+							info.UserInfo = p.UserInfo;
+							info.MoveInfo = p.MoveInfo;
+							info.PosInfo = p.PosInfo;
+							spawnPacket.Objects.Add(info);
+                        }
 					}
 
 					player.Session.Send(spawnPacket);
@@ -51,10 +57,15 @@ namespace Server.Game
 			// 타인한테 정보 전송
 			{
 				S_Spawn spawnPacket = new S_Spawn();
-				spawnPacket.Objects.Add(gameObject.Info);
+				ObjectInfo newObject = new ObjectInfo();
+				newObject.ObjectId = gameObject.ObjectId;
+				newObject.UserInfo = gameObject.UserInfo;
+				newObject.MoveInfo = gameObject.MoveInfo;
+				newObject.PosInfo = gameObject.PosInfo;
+				spawnPacket.Objects.Add(newObject);
 				foreach (Player p in _players.Values)
 				{
-					if (p.Id != gameObject.Id)
+					if (p.ObjectId != gameObject.ObjectId)
 						p.Session.Send(spawnPacket);
 				}
 			}
@@ -85,7 +96,7 @@ namespace Server.Game
 				despawnPacket.ObjectIds.Add(objectId);
 				foreach (Player p in _players.Values)
 				{
-					if (p.Id != objectId)
+					if (p.ObjectId != objectId)
 						p.Session.Send(despawnPacket);
 				}
 			}
@@ -98,10 +109,27 @@ namespace Server.Game
 
 			S_Move newMovePacket = new S_Move();
 			newMovePacket.ObjectId = player.Info.ObjectId;
-			newMovePacket.PosInfo = movePacket.PosInfo;
+			newMovePacket.MoveInfo = movePacket.MoveInfo;
+			player.MoveInfo = movePacket.MoveInfo;
+            Console.WriteLine($"{player.Info.ObjectId} 플레이어의 이동 동기화");
 
 			Broadcast(newMovePacket);
 		}
+
+		public void HandleSync(Player player, C_Sync syncPacket)
+        {
+			if (player == null)
+				return;
+
+			S_Sync newSyncPacket = new S_Sync();
+			newSyncPacket.ObjectId = player.Info.ObjectId;
+			newSyncPacket.PosInfo = syncPacket.PosInfo;
+			player.PosInfo = syncPacket.PosInfo;
+            Console.WriteLine($"{player.Info.ObjectId} 플레이어의 위치 ({player.PosInfo.PosX}, {player.PosInfo.PosY}, {player.PosInfo.PosX}) 동기화");
+
+			Broadcast(newSyncPacket);
+
+        }
 
 		public Player FindPlayer(Func<GameObject, bool> condition)
 		{

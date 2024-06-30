@@ -17,11 +17,6 @@ namespace TestClient
 				foreach (ServerSession session in _sessions)
 				{
 					C_Move chatPacket = new C_Move();
-					chatPacket.PosInfo = new PositionInfo();
-					chatPacket.PosInfo.State = CreatureState.Moving;
-					chatPacket.PosInfo.PosX = new Random().Next(-10, 10);
-					chatPacket.PosInfo.PosY = 0;
-					chatPacket.PosInfo.PosZ = new Random().Next(-10, 10);
 
 					session.Send(chatPacket);
 				}

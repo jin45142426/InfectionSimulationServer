@@ -4,6 +4,104 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+public class Scenario
+{
+    public string Infection { get; set; }       //현재 시나리오의 감염병 종류
+
+    #region 환자
+    public string PatientName { get; set; }     //환자 이름
+    public string PatientId { get; set; }       //환자 생년월일
+    #endregion
+
+    public int ScenarioCount { get; set; } = 0;     //시나리오 진행도
+    public ScenarioInfo ScenarioInfo { get; set; } = new ScenarioInfo();
+}
+
+public class ScenarioInfo
+{
+    public string Situation { get; set; }   //현재 상황
+    public string Actor { get; set; }       //행동을 취해야하는 사람
+    public string Action { get; set; }      //취해야 할 행동
+    public string Script { get; set; }      //NPC 대사
+    public List<string> Keywords { get; set; }    //키워드
+}
+
+public struct Vector2
+{
+    public float x;
+    public float y;
+
+    public Vector2(float x, float y) { this.x = x; this.y = y; }
+
+    public static Vector2 Up { get { return new Vector2(0, 1); } }
+    public static Vector2 Right { get { return new Vector2(1, 0); } }
+
+    public static Vector2 operator +(Vector2 a, Vector2 b)
+    {
+        return new Vector2(a.x + b.x, a.y + b.y);
+    }
+
+    public static Vector2 operator -(Vector2 a, Vector2 b)
+    {
+        return new Vector2(a.x - b.x, a.y - b.y);
+    }
+
+    public static bool operator ==(Vector2 a, Vector2 b)
+    {
+        if (a.x == b.x && a.y == b.y )
+            return true;
+        else
+            return false;
+    }
+
+    public static bool operator !=(Vector2 a, Vector2 b)
+    {
+        if (a.x == b.x && a.y == b.y)
+            return false;
+        else
+            return true;
+    }
+
+    public static Vector2 operator *(Vector2 a, float b)
+    {
+        return new Vector2(a.x * b, a.y * b);
+    }
+
+    public static Vector2 operator /(Vector2 a, float b)
+    {
+        return new Vector2(a.x / b, a.y / b);
+    }
+
+    public static Vector2 operator -(Vector2 a)
+    {
+        return new Vector2(-a.x, -a.y);
+    }
+
+    public float magnitude { get { return (float)Math.Sqrt(sqrMagnitude); } }
+
+    public float sqrMagnitude { get { return (x * x + y * y); } }
+
+    public Vector2 normalized
+    {
+        get
+        {
+            float length = magnitude;
+
+            if (length == 0)
+            {
+                return new Vector2(0, 0);
+            }
+
+            return new Vector2(x / length, y / length);
+        }
+    }
+
+    public static Vector2 Lerp(Vector2 start, Vector2 end, float t)
+    {
+        return new Vector2(start.x + (end.x - start.x) * t, start.y + (end.y - start.y) * t);
+    }
+}
+
 public struct Vector3
 {
     public float x;

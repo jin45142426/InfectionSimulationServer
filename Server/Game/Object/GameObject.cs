@@ -15,49 +15,94 @@ namespace Server.Game
 
 		public ObjectInfo Info { get; set; } = new ObjectInfo();
 
-		public int Id
+		public int ObjectId
 		{
 			get { return Info.ObjectId; }
 			set { Info.ObjectId = value; }
 		}
 
-		public string Name
-		{
-			get { return Info.Name; }
-			set { Info.Name = value; }
-		}
-
 		#endregion
 
-		#region PositionInfo PosInfo
+		#region UserInfo UserInfo
 
-		public PositionInfo PosInfo { get; private set; } = new PositionInfo();
+		public UserInfo UserInfo { get; set; } = new UserInfo();
+
+		public string Name
+		{
+			get { return UserInfo.Name; }
+			set { UserInfo.Name = value; }
+		}
+
+        public string Id
+        {
+            get { return UserInfo.Id; }
+            set { UserInfo.Id = value; }
+        }
+
+		public string Position
+        {
+			get { return UserInfo.Position; }
+			set { UserInfo.Position = value; }
+        }
+
+        #endregion
+
+        #region MoveInfo MoveInfo
+
+        public MoveInfo MoveInfo { get; set; } = new MoveInfo();
 
 		public CreatureState State
 		{
-			get { return PosInfo.State; }
-			set { PosInfo.State = value; }
+			get { return MoveInfo.State; }
+			set { MoveInfo.State = value; }
 		}
 
-		public Vector3 Pos
+		public Vector3 Dir
 		{
 			get
 			{
-				return new Vector3(PosInfo.PosX, PosInfo.PosY, PosInfo.PosZ);
+				return new Vector3(MoveInfo.DirX, 0, MoveInfo.DirZ);
 			}
 
 			set
 			{
-				PosInfo.PosX = value.x;
-				PosInfo.PosY = value.y;
-				PosInfo.PosZ = value.z;
+				MoveInfo.DirX = value.x;
+				MoveInfo.DirZ = value.z;
 			}
 		}
 
-		#endregion
+		public int InputBit
+        {
+			get { return MoveInfo.InputBit; }
+            set
+            {
+				MoveInfo.InputBit = value;
+            }
+        }
 
-		public GameObject()
+        #endregion
+
+        #region PosInfo PosInfo
+
+		public PosInfo PosInfo { get; set; } = new PosInfo();
+
+		public Vector3 Pos
+        {
+            get { return new Vector3(PosInfo.PosX, PosInfo.PosY, PosInfo.PosZ); }
+            set
+            {
+				PosInfo.PosX = value.x;
+				PosInfo.PosY = value.y;
+				PosInfo.PosZ = value.z;
+            }
+        }
+
+        #endregion
+
+        public GameObject()
 		{
+			Info.UserInfo = UserInfo;
+			Info.MoveInfo = MoveInfo;
 			Info.PosInfo = PosInfo;
 		}
 

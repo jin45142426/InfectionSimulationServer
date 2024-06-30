@@ -11,8 +11,9 @@ namespace Server
 	{
 		static Listener _listener = new Listener();
 		static List<System.Timers.Timer> _timers = new List<System.Timers.Timer>();
+		static Server.Lobby.Lobby _lobby = new Server.Lobby.Lobby();
 
-		static void TickRoom(GameRoom room, int tick = 100)
+		static void TickRoom<T>(T room, int tick = 100) where T : JobSerializer
 		{
 			var timer = new System.Timers.Timer();
 			timer.Interval = tick;
@@ -38,7 +39,8 @@ namespace Server
 
 			while (true)
 			{
-				Thread.Sleep(100);
+				_lobby.Update();
+				Thread.Sleep(500);
 			}
 		}
 	}

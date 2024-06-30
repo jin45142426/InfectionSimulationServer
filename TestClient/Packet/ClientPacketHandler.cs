@@ -22,7 +22,6 @@ class PacketHandler
     {
         S_Move getPacket = (S_Move)packet;
         ServerSession serverSession = (ServerSession)session;
-        Console.WriteLine($"플레이어{getPacket.ObjectId}가 ({getPacket.PosInfo.PosX}, {getPacket.PosInfo.PosY}, {getPacket.PosInfo.PosZ})로 이동");
     }
 
     public static void S_DespawnHandler(PacketSession session, IMessage packet)

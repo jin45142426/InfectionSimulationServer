@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Server.Game
+namespace Server
 {
 	public class JobSerializer
 	{
@@ -32,6 +32,11 @@ namespace Server.Game
 			{
 				_jobQueue.Enqueue(job);
 			}
+		}
+
+		public virtual void Update()
+		{
+			Flush();
 		}
 
 		public void Flush()

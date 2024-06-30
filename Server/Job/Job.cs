@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Server.Game
+namespace Server
 {
 	//인터페이스를 상속하여 서로 다른 인수를 가지는 작업들을 하나의 타입으로 저장 가능 - 업캐스팅
 	public interface IJob

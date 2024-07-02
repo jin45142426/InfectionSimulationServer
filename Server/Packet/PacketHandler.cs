@@ -66,4 +66,29 @@ class PacketHandler
 		
 		room.Push(room.EnterGame, myPlayer);
 	}
+
+    public static void C_CompleteHandler(PacketSession session, IMessage packet)
+    {
+        C_Complete completePacket = (C_Complete)packet;
+		ClientSession clientSession = (ClientSession)session;
+
+		Player player = clientSession.MyPlayer;
+		if (player == null)
+			return;
+
+		GameRoom room = player.Room;
+		if (room == null)
+			return;
+
+		room.Push(room.HandleComplete, player, completePacket);
+	}
+
+    public static void C_StartScenarioHandler(PacketSession session, IMessage packet)
+    {
+        C_StartScenario scenarioPacket = (C_StartScenario)packet;
+		ClientSession clientSession = (ClientSession)session;
+
+		GameRoom room = clientSession.MyPlayer.Room;
+		room.Push(room.HandleScenario, clientSession.MyPlayer, scenarioPacket);
+    }
 }

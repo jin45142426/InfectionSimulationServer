@@ -9,7 +9,11 @@ namespace Server.Game
 	public class GameRoom : JobSerializer
 	{
 		public int RoomId { get; set; }
-		public int ScenarioProcess { get; set; } = 0;
+
+		public int ScenarioProgress { get; set; } = 0;
+		public string ScenarioName { get; set; }
+		public int CompleteCount { get; set; } = 0;
+
 		Dictionary<int, Player> _players = new Dictionary<int, Player>();
 
 		public void EnterGame(GameObject gameObject)
@@ -129,6 +133,39 @@ namespace Server.Game
 
 			Broadcast(newSyncPacket);
 
+        }
+
+		public void HandleScenario(Player player, C_StartScenario packet)
+        {
+			if (player == null)
+				return;
+
+			this.ScenarioProgress = 0;
+			this.ScenarioName = packet.ScenarioName;
+			this.CompleteCount = 0;
+
+			S_StartScenario startPacket = new S_StartScenario();
+			startPacket.ScenarioName = packet.ScenarioName;
+
+			Broadcast(startPacket);
+
+            Console.WriteLine($"{RoomId}방에서 {ScenarioName} 훈련 시나리오 시작");
+        }
+
+		public void HandleComplete(Player player, C_Complete completePacket)
+        {
+			if (player == null)
+				return;
+
+			CompleteCount++;
+
+			if(CompleteCount >= _players.Count)
+            {
+				S_NextProgress processPacket = new S_NextProgress();
+				processPacket.Progress = ++ScenarioProgress;
+				Broadcast(processPacket);
+				CompleteCount = 0;
+            }
         }
 
 		public Player FindPlayer(Func<GameObject, bool> condition)

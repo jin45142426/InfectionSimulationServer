@@ -14,6 +14,8 @@ namespace Server.Game
 		public string ScenarioName { get; set; }
 		public int CompleteCount { get; set; } = 0;
 
+		bool _doingScenario = false;
+
 		Dictionary<int, Player> _players = new Dictionary<int, Player>();
 
 		public void EnterGame(GameObject gameObject)
@@ -140,6 +142,11 @@ namespace Server.Game
 			if (player == null)
 				return;
 
+			if (_doingScenario == true)
+				return;
+
+			_doingScenario = true;
+
 			this.ScenarioProgress = 0;
 			this.ScenarioName = packet.ScenarioName;
 			this.CompleteCount = 0;
@@ -166,6 +173,18 @@ namespace Server.Game
 				Broadcast(processPacket);
 				CompleteCount = 0;
             }
+        }
+
+		public void HandleTalk(Player player, C_Talk talkPacket)
+        {
+			if (player == null)
+				return;
+
+			S_Talk sTalkPacket = new S_Talk();
+			sTalkPacket.Id = player.ObjectId;
+			sTalkPacket.Message = talkPacket.Message;
+			sTalkPacket.IsTalking = talkPacket.IsTalking;
+			Broadcast(sTalkPacket);
         }
 
 		public Player FindPlayer(Func<GameObject, bool> condition)

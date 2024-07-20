@@ -77,7 +77,7 @@ namespace Server.Game
 			}
 		}
 
-		public void LeaveGame(int objectId)
+        public void LeaveGame(int objectId)
 		{
 			GameObjectType type = ObjectManager.GetObjectTypeById(objectId);
 
@@ -108,7 +108,31 @@ namespace Server.Game
 			}
 		}
 
-		public void HandleMove(Player player, C_Move movePacket)
+		public void HandleEquip(Player player, C_Equip packet)
+		{
+			if (player == null)
+				return;
+
+			S_Equip equipPacket = new S_Equip();
+			equipPacket.Id = player.ObjectId;
+			equipPacket.ItemName = packet.ItemName;
+			
+			Broadcast(equipPacket);
+		}
+
+		public void HandleUnEquip(Player player, C_UnEquip packet)
+        {
+			if (player == null)
+				return;
+
+			S_UnEquip unEquipPacket = new S_UnEquip();
+			unEquipPacket.Id = player.ObjectId;
+			unEquipPacket.ItemName = packet.ItemName;
+
+			Broadcast(unEquipPacket);
+		}
+
+        public void HandleMove(Player player, C_Move movePacket)
 		{
 			if (player == null)
 				return;

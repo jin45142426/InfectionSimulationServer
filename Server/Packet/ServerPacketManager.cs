@@ -34,7 +34,11 @@ class PacketManager
 		_onRecv.Add((ushort)MsgId.CComplete, MakePacket<C_Complete>);
 		_handler.Add((ushort)MsgId.CComplete, PacketHandler.C_CompleteHandler);		
 		_onRecv.Add((ushort)MsgId.CTalk, MakePacket<C_Talk>);
-		_handler.Add((ushort)MsgId.CTalk, PacketHandler.C_TalkHandler);
+		_handler.Add((ushort)MsgId.CTalk, PacketHandler.C_TalkHandler);		
+		_onRecv.Add((ushort)MsgId.CEquip, MakePacket<C_Equip>);
+		_handler.Add((ushort)MsgId.CEquip, PacketHandler.C_EquipHandler);		
+		_onRecv.Add((ushort)MsgId.CUnEquip, MakePacket<C_UnEquip>);
+		_handler.Add((ushort)MsgId.CUnEquip, PacketHandler.C_UnEquipHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

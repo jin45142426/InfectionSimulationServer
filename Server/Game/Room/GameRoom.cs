@@ -207,7 +207,6 @@ namespace Server.Game
 			S_Talk sTalkPacket = new S_Talk();
 			sTalkPacket.Id = player.ObjectId;
 			sTalkPacket.Message = talkPacket.Message;
-			sTalkPacket.IsTalking = talkPacket.IsTalking;
 			Broadcast(sTalkPacket);
         }
 

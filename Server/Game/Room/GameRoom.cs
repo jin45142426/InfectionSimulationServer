@@ -127,7 +127,6 @@ namespace Server.Game
 
 			S_UnEquip unEquipPacket = new S_UnEquip();
 			unEquipPacket.Id = player.ObjectId;
-			unEquipPacket.ItemName = packet.ItemName;
 
 			Broadcast(unEquipPacket);
 		}

@@ -108,7 +108,21 @@ namespace Server.Game
 			}
 		}
 
-		public void HandleEquip(Player player, C_Equip packet)
+        public void HandleVoice(Player player, C_Voice packet)
+        {
+			if (player == null)
+				return;
+
+			S_Voice voicePacket = new S_Voice();
+			voicePacket.Id = player.ObjectId;
+            voicePacket.VoiceClip.AddRange(packet.VoiceClip);
+
+			Broadcast(voicePacket, false, player);
+
+            Console.WriteLine($"음성 데이터 크기 : {packet.VoiceClip.CalculateSize}");
+        }
+
+        public void HandleEquip(Player player, C_Equip packet)
 		{
 			if (player == null)
 				return;
@@ -220,10 +234,14 @@ namespace Server.Game
 			return null;
 		}
 
-		public void Broadcast(IMessage packet)
+		public void Broadcast(IMessage packet, bool includeSender = true, Player sender = null)
 		{
 			foreach (Player p in _players.Values)
 			{
+				if (includeSender == false && sender != null)
+					if (p == sender)
+						continue;
+
 				p.Session.Send(packet);
 			}
 		}

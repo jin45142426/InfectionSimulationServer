@@ -83,7 +83,23 @@ class PacketHandler
 		room.Push(room.HandleEquip, player, equipPacket);
 	}
 
-	public static void C_UnEquipHandler(PacketSession session, IMessage packet)
+    public static void C_VoiceHandler(PacketSession session, IMessage packet)
+    {
+		C_Voice voicePacket = (C_Voice)packet;
+		ClientSession clientSession = (ClientSession)session;
+
+		Player player = clientSession.MyPlayer;
+		if (player == null)
+			return;
+
+		GameRoom room = player.Room;
+		if (room == null)
+			return;
+
+		room.Push(room.HandleVoice, player, voicePacket);
+	}
+
+    public static void C_UnEquipHandler(PacketSession session, IMessage packet)
     {
 		C_UnEquip unEquipPacket = (C_UnEquip)packet;
 		ClientSession clientSession = (ClientSession)session;

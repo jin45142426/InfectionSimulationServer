@@ -115,11 +115,11 @@ namespace Server.Game
 
 			S_Voice voicePacket = new S_Voice();
 			voicePacket.Id = player.ObjectId;
-            voicePacket.VoiceClip.AddRange(packet.VoiceClip);
+            voicePacket.VoiceClip = packet.VoiceClip;
 
 			Broadcast(voicePacket, false, player);
 
-            Console.WriteLine($"음성 데이터 크기 : {packet.VoiceClip.CalculateSize}");
+            Console.WriteLine($"음성 데이터 크기 : {packet.VoiceClip.Length * sizeof(byte)}");
         }
 
         public void HandleEquip(Player player, C_Equip packet)

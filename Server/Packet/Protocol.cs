@@ -25,50 +25,50 @@ namespace Google.Protobuf.Protocol {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg5Qcm90b2NvbC5wcm90bxIIUHJvdG9jb2waH2dvb2dsZS9wcm90b2J1Zi90",
-            "aW1lc3RhbXAucHJvdG8iOQoHU19Wb2ljZRIKCgJpZBgBIAEoBRIRCgl2b2lj",
-            "ZUNsaXAYAiADKAISDwoHY2hhbm5lbBgDIAEoBSItCgdDX1ZvaWNlEhEKCXZv",
-            "aWNlQ2xpcBgBIAMoAhIPCgdjaGFubmVsGAIgASgFIhcKCVNfVW5FcXVpcBIK",
-            "CgJpZBgBIAEoBSILCglDX1VuRXF1aXAiJwoHU19FcXVpcBIKCgJpZBgBIAEo",
-            "BRIQCghpdGVtTmFtZRgCIAEoCSIbCgdDX0VxdWlwEhAKCGl0ZW1OYW1lGAEg",
-            "ASgJIiUKBlNfVGFsaxIKCgJpZBgBIAEoBRIPCgdtZXNzYWdlGAIgASgJIhkK",
-            "BkNfVGFsaxIPCgdtZXNzYWdlGAEgASgJIgwKCkNfQ29tcGxldGUiIgoOU19O",
-            "ZXh0UHJvZ3Jlc3MSEAoIcHJvZ3Jlc3MYASABKAUiJwoPQ19TdGFydFNjZW5h",
-            "cmlvEhQKDHNjZW5hcmlvTmFtZRgBIAEoCSInCg9TX1N0YXJ0U2NlbmFyaW8S",
-            "FAoMc2NlbmFyaW9OYW1lGAEgASgJIi8KB0NfTG9naW4SJAoIdXNlckluZm8Y",
-            "ASABKAsyEi5Qcm90b2NvbC5Vc2VySW5mbyIzCgtTX0VudGVyR2FtZRIkCgZw",
-            "bGF5ZXIYASABKAsyFC5Qcm90b2NvbC5PYmplY3RJbmZvIg0KC1NfTGVhdmVH",
-            "YW1lIjAKB1NfU3Bhd24SJQoHb2JqZWN0cxgBIAMoCzIULlByb3RvY29sLk9i",
-            "amVjdEluZm8iHgoJU19EZXNwYXduEhEKCW9iamVjdElkcxgBIAMoBSIuCgZD",
-            "X01vdmUSJAoIbW92ZUluZm8YASABKAsyEi5Qcm90b2NvbC5Nb3ZlSW5mbyJA",
-            "CgZTX01vdmUSEAoIb2JqZWN0SWQYASABKAUSJAoIbW92ZUluZm8YAiABKAsy",
-            "Ei5Qcm90b2NvbC5Nb3ZlSW5mbyIsCgZDX1N5bmMSIgoHcG9zSW5mbxgBIAEo",
-            "CzIRLlByb3RvY29sLlBvc0luZm8iPgoGU19TeW5jEhAKCG9iamVjdElkGAEg",
-            "ASgFEiIKB3Bvc0luZm8YAiABKAsyES5Qcm90b2NvbC5Qb3NJbmZvIo4BCgpP",
-            "YmplY3RJbmZvEhAKCG9iamVjdElkGAEgASgFEiQKCHVzZXJJbmZvGAIgASgL",
-            "MhIuUHJvdG9jb2wuVXNlckluZm8SJAoIbW92ZUluZm8YAyABKAsyEi5Qcm90",
-            "b2NvbC5Nb3ZlSW5mbxIiCgdwb3NJbmZvGAQgASgLMhEuUHJvdG9jb2wuUG9z",
-            "SW5mbyJgCghNb3ZlSW5mbxImCgVzdGF0ZRgBIAEoDjIXLlByb3RvY29sLkNy",
-            "ZWF0dXJlU3RhdGUSDAoEZGlyWBgCIAEoAhIMCgRkaXJaGAMgASgCEhAKCGlu",
-            "cHV0Qml0GAQgASgFIjMKB1Bvc0luZm8SDAoEcG9zWBgBIAEoAhIMCgRwb3NZ",
-            "GAIgASgCEgwKBHBvc1oYAyABKAIiNgoIVXNlckluZm8SDAoEbmFtZRgBIAEo",
-            "CRIKCgJpZBgCIAEoCRIQCghwb3NpdGlvbhgDIAEoCSrBAgoFTXNnSWQSEAoM",
-            "U19FTlRFUl9HQU1FEAASEAoMU19MRUFWRV9HQU1FEAESCwoHU19TUEFXThAC",
-            "Eg0KCVNfREVTUEFXThADEgoKBkNfTU9WRRAEEgoKBlNfTU9WRRAFEgoKBkNf",
-            "U1lOQxAGEgoKBlNfU1lOQxAHEgsKB0NfTE9HSU4QCBIUChBDX1NUQVJUX1ND",
-            "RU5BUklPEAkSFAoQU19TVEFSVF9TQ0VOQVJJTxAKEg4KCkNfQ09NUExFVEUQ",
-            "CxITCg9TX05FWFRfUFJPR1JFU1MQDBIKCgZDX1RBTEsQDRIKCgZTX1RBTEsQ",
-            "DhILCgdDX0VRVUlQEA8SCwoHU19FUVVJUBAQEg4KCkNfVU5fRVFVSVAQERIO",
-            "CgpTX1VOX0VRVUlQEBISCwoHQ19WT0lDRRATEgsKB1NfVk9JQ0UQFCp/Cg1D",
-            "cmVhdHVyZVN0YXRlEggKBElETEUQABIHCgNSVU4QARIQCgxDT05WRVJTQVRJ",
-            "T04QAhIPCgtVU0lOR19QSE9ORRADEgsKB1NFVFRJTkcQBBIJCgVDTEVBThAF",
-            "EgsKB1BJQ0tfVVAQBhITCg9VU0lOR19JTlZFTlRPUlkQByoxCg5HYW1lT2Jq",
-            "ZWN0VHlwZRIICgROT05FEAASCgoGUExBWUVSEAESCQoFTl9QX0MQAkIbqgIY",
-            "R29vZ2xlLlByb3RvYnVmLlByb3RvY29sYgZwcm90bzM="));
+            "aW1lc3RhbXAucHJvdG8iKAoHU19Wb2ljZRIKCgJpZBgBIAEoBRIRCgl2b2lj",
+            "ZUNsaXAYAiABKAwiHAoHQ19Wb2ljZRIRCgl2b2ljZUNsaXAYASABKAwiFwoJ",
+            "U19VbkVxdWlwEgoKAmlkGAEgASgFIgsKCUNfVW5FcXVpcCInCgdTX0VxdWlw",
+            "EgoKAmlkGAEgASgFEhAKCGl0ZW1OYW1lGAIgASgJIhsKB0NfRXF1aXASEAoI",
+            "aXRlbU5hbWUYASABKAkiJQoGU19UYWxrEgoKAmlkGAEgASgFEg8KB21lc3Nh",
+            "Z2UYAiABKAkiGQoGQ19UYWxrEg8KB21lc3NhZ2UYASABKAkiDAoKQ19Db21w",
+            "bGV0ZSIiCg5TX05leHRQcm9ncmVzcxIQCghwcm9ncmVzcxgBIAEoBSInCg9D",
+            "X1N0YXJ0U2NlbmFyaW8SFAoMc2NlbmFyaW9OYW1lGAEgASgJIicKD1NfU3Rh",
+            "cnRTY2VuYXJpbxIUCgxzY2VuYXJpb05hbWUYASABKAkiLwoHQ19Mb2dpbhIk",
+            "Cgh1c2VySW5mbxgBIAEoCzISLlByb3RvY29sLlVzZXJJbmZvIjMKC1NfRW50",
+            "ZXJHYW1lEiQKBnBsYXllchgBIAEoCzIULlByb3RvY29sLk9iamVjdEluZm8i",
+            "DQoLU19MZWF2ZUdhbWUiMAoHU19TcGF3bhIlCgdvYmplY3RzGAEgAygLMhQu",
+            "UHJvdG9jb2wuT2JqZWN0SW5mbyIeCglTX0Rlc3Bhd24SEQoJb2JqZWN0SWRz",
+            "GAEgAygFIi4KBkNfTW92ZRIkCghtb3ZlSW5mbxgBIAEoCzISLlByb3RvY29s",
+            "Lk1vdmVJbmZvIkAKBlNfTW92ZRIQCghvYmplY3RJZBgBIAEoBRIkCghtb3Zl",
+            "SW5mbxgCIAEoCzISLlByb3RvY29sLk1vdmVJbmZvIiwKBkNfU3luYxIiCgdw",
+            "b3NJbmZvGAEgASgLMhEuUHJvdG9jb2wuUG9zSW5mbyI+CgZTX1N5bmMSEAoI",
+            "b2JqZWN0SWQYASABKAUSIgoHcG9zSW5mbxgCIAEoCzIRLlByb3RvY29sLlBv",
+            "c0luZm8ijgEKCk9iamVjdEluZm8SEAoIb2JqZWN0SWQYASABKAUSJAoIdXNl",
+            "ckluZm8YAiABKAsyEi5Qcm90b2NvbC5Vc2VySW5mbxIkCghtb3ZlSW5mbxgD",
+            "IAEoCzISLlByb3RvY29sLk1vdmVJbmZvEiIKB3Bvc0luZm8YBCABKAsyES5Q",
+            "cm90b2NvbC5Qb3NJbmZvImAKCE1vdmVJbmZvEiYKBXN0YXRlGAEgASgOMhcu",
+            "UHJvdG9jb2wuQ3JlYXR1cmVTdGF0ZRIMCgRkaXJYGAIgASgCEgwKBGRpcloY",
+            "AyABKAISEAoIaW5wdXRCaXQYBCABKAUiMwoHUG9zSW5mbxIMCgRwb3NYGAEg",
+            "ASgCEgwKBHBvc1kYAiABKAISDAoEcG9zWhgDIAEoAiI2CghVc2VySW5mbxIM",
+            "CgRuYW1lGAEgASgJEgoKAmlkGAIgASgJEhAKCHBvc2l0aW9uGAMgASgJKsEC",
+            "CgVNc2dJZBIQCgxTX0VOVEVSX0dBTUUQABIQCgxTX0xFQVZFX0dBTUUQARIL",
+            "CgdTX1NQQVdOEAISDQoJU19ERVNQQVdOEAMSCgoGQ19NT1ZFEAQSCgoGU19N",
+            "T1ZFEAUSCgoGQ19TWU5DEAYSCgoGU19TWU5DEAcSCwoHQ19MT0dJThAIEhQK",
+            "EENfU1RBUlRfU0NFTkFSSU8QCRIUChBTX1NUQVJUX1NDRU5BUklPEAoSDgoK",
+            "Q19DT01QTEVURRALEhMKD1NfTkVYVF9QUk9HUkVTUxAMEgoKBkNfVEFMSxAN",
+            "EgoKBlNfVEFMSxAOEgsKB0NfRVFVSVAQDxILCgdTX0VRVUlQEBASDgoKQ19V",
+            "Tl9FUVVJUBAREg4KClNfVU5fRVFVSVAQEhILCgdDX1ZPSUNFEBMSCwoHU19W",
+            "T0lDRRAUKokBCg1DcmVhdHVyZVN0YXRlEggKBElETEUQABIHCgNSVU4QARIQ",
+            "CgxDT05WRVJTQVRJT04QAhIPCgtVU0lOR19QSE9ORRADEgsKB1NFVFRJTkcQ",
+            "BBIJCgVDTEVBThAFEgsKB1BJQ0tfVVAQBhITCg9VU0lOR19JTlZFTlRPUlkQ",
+            "BxIICgRQVVNIEAgqMQoOR2FtZU9iamVjdFR5cGUSCAoETk9ORRAAEgoKBlBM",
+            "QVlFUhABEgkKBU5fUF9DEAJCG6oCGEdvb2dsZS5Qcm90b2J1Zi5Qcm90b2Nv",
+            "bGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.GameObjectType), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Voice), global::Google.Protobuf.Protocol.S_Voice.Parser, new[]{ "Id", "VoiceClip", "Channel" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_Voice), global::Google.Protobuf.Protocol.C_Voice.Parser, new[]{ "VoiceClip", "Channel" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Voice), global::Google.Protobuf.Protocol.S_Voice.Parser, new[]{ "Id", "VoiceClip" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_Voice), global::Google.Protobuf.Protocol.C_Voice.Parser, new[]{ "VoiceClip" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_UnEquip), global::Google.Protobuf.Protocol.S_UnEquip.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_UnEquip), global::Google.Protobuf.Protocol.C_UnEquip.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Equip), global::Google.Protobuf.Protocol.S_Equip.Parser, new[]{ "Id", "ItemName" }, null, null, null, null),
@@ -131,6 +131,7 @@ namespace Google.Protobuf.Protocol {
     [pbr::OriginalName("CLEAN")] Clean = 5,
     [pbr::OriginalName("PICK_UP")] PickUp = 6,
     [pbr::OriginalName("USING_INVENTORY")] UsingInventory = 7,
+    [pbr::OriginalName("PUSH")] Push = 8,
   }
 
   public enum GameObjectType {
@@ -168,8 +169,7 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public S_Voice(S_Voice other) : this() {
       id_ = other.id_;
-      voiceClip_ = other.voiceClip_.Clone();
-      channel_ = other.channel_;
+      voiceClip_ = other.voiceClip_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -191,22 +191,12 @@ namespace Google.Protobuf.Protocol {
 
     /// <summary>Field number for the "voiceClip" field.</summary>
     public const int VoiceClipFieldNumber = 2;
-    private static readonly pb::FieldCodec<float> _repeated_voiceClip_codec
-        = pb::FieldCodec.ForFloat(18);
-    private readonly pbc::RepeatedField<float> voiceClip_ = new pbc::RepeatedField<float>();
+    private pb::ByteString voiceClip_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<float> VoiceClip {
+    public pb::ByteString VoiceClip {
       get { return voiceClip_; }
-    }
-
-    /// <summary>Field number for the "channel" field.</summary>
-    public const int ChannelFieldNumber = 3;
-    private int channel_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Channel {
-      get { return channel_; }
       set {
-        channel_ = value;
+        voiceClip_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -224,8 +214,7 @@ namespace Google.Protobuf.Protocol {
         return true;
       }
       if (Id != other.Id) return false;
-      if(!voiceClip_.Equals(other.voiceClip_)) return false;
-      if (Channel != other.Channel) return false;
+      if (VoiceClip != other.VoiceClip) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -233,8 +222,7 @@ namespace Google.Protobuf.Protocol {
     public override int GetHashCode() {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
-      hash ^= voiceClip_.GetHashCode();
-      if (Channel != 0) hash ^= Channel.GetHashCode();
+      if (VoiceClip.Length != 0) hash ^= VoiceClip.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -252,10 +240,9 @@ namespace Google.Protobuf.Protocol {
         output.WriteRawTag(8);
         output.WriteInt32(Id);
       }
-      voiceClip_.WriteTo(output, _repeated_voiceClip_codec);
-      if (Channel != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(Channel);
+      if (VoiceClip.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteBytes(VoiceClip);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -268,9 +255,8 @@ namespace Google.Protobuf.Protocol {
       if (Id != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Id);
       }
-      size += voiceClip_.CalculateSize(_repeated_voiceClip_codec);
-      if (Channel != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Channel);
+      if (VoiceClip.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(VoiceClip);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -286,9 +272,8 @@ namespace Google.Protobuf.Protocol {
       if (other.Id != 0) {
         Id = other.Id;
       }
-      voiceClip_.Add(other.voiceClip_);
-      if (other.Channel != 0) {
-        Channel = other.Channel;
+      if (other.VoiceClip.Length != 0) {
+        VoiceClip = other.VoiceClip;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -305,13 +290,8 @@ namespace Google.Protobuf.Protocol {
             Id = input.ReadInt32();
             break;
           }
-          case 18:
-          case 21: {
-            voiceClip_.AddEntriesFrom(input, _repeated_voiceClip_codec);
-            break;
-          }
-          case 24: {
-            Channel = input.ReadInt32();
+          case 18: {
+            VoiceClip = input.ReadBytes();
             break;
           }
         }
@@ -345,8 +325,7 @@ namespace Google.Protobuf.Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public C_Voice(C_Voice other) : this() {
-      voiceClip_ = other.voiceClip_.Clone();
-      channel_ = other.channel_;
+      voiceClip_ = other.voiceClip_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -357,22 +336,12 @@ namespace Google.Protobuf.Protocol {
 
     /// <summary>Field number for the "voiceClip" field.</summary>
     public const int VoiceClipFieldNumber = 1;
-    private static readonly pb::FieldCodec<float> _repeated_voiceClip_codec
-        = pb::FieldCodec.ForFloat(10);
-    private readonly pbc::RepeatedField<float> voiceClip_ = new pbc::RepeatedField<float>();
+    private pb::ByteString voiceClip_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<float> VoiceClip {
+    public pb::ByteString VoiceClip {
       get { return voiceClip_; }
-    }
-
-    /// <summary>Field number for the "channel" field.</summary>
-    public const int ChannelFieldNumber = 2;
-    private int channel_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Channel {
-      get { return channel_; }
       set {
-        channel_ = value;
+        voiceClip_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -389,16 +358,14 @@ namespace Google.Protobuf.Protocol {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!voiceClip_.Equals(other.voiceClip_)) return false;
-      if (Channel != other.Channel) return false;
+      if (VoiceClip != other.VoiceClip) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= voiceClip_.GetHashCode();
-      if (Channel != 0) hash ^= Channel.GetHashCode();
+      if (VoiceClip.Length != 0) hash ^= VoiceClip.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -412,10 +379,9 @@ namespace Google.Protobuf.Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      voiceClip_.WriteTo(output, _repeated_voiceClip_codec);
-      if (Channel != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(Channel);
+      if (VoiceClip.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteBytes(VoiceClip);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -425,9 +391,8 @@ namespace Google.Protobuf.Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      size += voiceClip_.CalculateSize(_repeated_voiceClip_codec);
-      if (Channel != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Channel);
+      if (VoiceClip.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(VoiceClip);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -440,9 +405,8 @@ namespace Google.Protobuf.Protocol {
       if (other == null) {
         return;
       }
-      voiceClip_.Add(other.voiceClip_);
-      if (other.Channel != 0) {
-        Channel = other.Channel;
+      if (other.VoiceClip.Length != 0) {
+        VoiceClip = other.VoiceClip;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -455,13 +419,8 @@ namespace Google.Protobuf.Protocol {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10:
-          case 13: {
-            voiceClip_.AddEntriesFrom(input, _repeated_voiceClip_codec);
-            break;
-          }
-          case 16: {
-            Channel = input.ReadInt32();
+          case 10: {
+            VoiceClip = input.ReadBytes();
             break;
           }
         }

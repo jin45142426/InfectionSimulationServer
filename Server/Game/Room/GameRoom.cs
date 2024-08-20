@@ -108,7 +108,18 @@ namespace Server.Game
 			}
 		}
 
-        public void HandleVoice(Player player, C_Voice packet)
+		public void HandleEndVoice(Player player, C_EndVoice packet)
+		{
+			if (player == null)
+				return;
+
+			S_EndVoice voicePacket = new S_EndVoice();
+			voicePacket.Id = player.ObjectId;
+
+			Broadcast(voicePacket);
+		}
+
+		public void HandleVoice(Player player, C_Voice packet)
         {
 			if (player == null)
 				return;
@@ -119,7 +130,7 @@ namespace Server.Game
 
 			Broadcast(voicePacket, false, player);
 
-            Console.WriteLine($"음성 데이터 크기 : {packet.VoiceClip.Length * sizeof(byte)}");
+            Console.WriteLine($"음성 패킷 크기 : {packet.VoiceClip.Length} bytes");
         }
 
         public void HandleEquip(Player player, C_Equip packet)

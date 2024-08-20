@@ -4,6 +4,7 @@ using System.Net;
 using System.Threading;
 using Server.Game;
 using ServerCore;
+using Whisper.net;
 
 namespace Server
 {

@@ -31,9 +31,9 @@ namespace Server
 			TickRoom(room, 50);
 
 			string host = Dns.GetHostName();
-			//IPHostEntry ipHost = Dns.GetHostEntry(host);
-			IPHostEntry ipHost = Dns.GetHostEntry("CGlabHospital.iptime.org");
-			IPAddress ipAddr = ipHost.AddressList[ipHost.AddressList.Length - 1];
+            IPHostEntry ipHost = Dns.GetHostEntry(host);
+            //IPHostEntry ipHost = Dns.GetHostEntry("CGlabHospital.iptime.org");
+            IPAddress ipAddr = ipHost.AddressList[ipHost.AddressList.Length - 1];
 			IPEndPoint endPoint = new IPEndPoint(ipAddr, 7777);
 
 			_listener.Init(endPoint, () => { return SessionManager.Instance.Generate(); });

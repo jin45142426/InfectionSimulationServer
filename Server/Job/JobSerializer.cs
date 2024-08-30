@@ -42,14 +42,19 @@ namespace Server
 		public void Flush()
 		{
 			_timer.Flush();
+			int completeCount = 0;
 
 			while (true)
 			{
 				IJob job = Pop();
 				if (job == null)
+                {
+					Server.Program.completePacketCount += completeCount;
 					return;
+                }
 
 				job.Execute();
+				completeCount++;
 			}
 		}
 

@@ -106,32 +106,12 @@ namespace Server.Game
 						p.Session.Send(despawnPacket);
 				}
 			}
+
+			if(_players.Count == 0)
+            {
+				_doingScenario = false;
+            }
 		}
-
-		public void HandleEndVoice(Player player, C_EndVoice packet)
-		{
-			if (player == null)
-				return;
-
-			S_EndVoice voicePacket = new S_EndVoice();
-			voicePacket.Id = player.ObjectId;
-
-			Broadcast(voicePacket);
-		}
-
-		public void HandleVoice(Player player, C_Voice packet)
-        {
-			if (player == null)
-				return;
-
-			S_Voice voicePacket = new S_Voice();
-			voicePacket.Id = player.ObjectId;
-            voicePacket.VoiceClip = packet.VoiceClip;
-
-			Broadcast(voicePacket, false, player);
-
-            Console.WriteLine($"음성 패킷 크기 : {packet.VoiceClip.Length} bytes");
-        }
 
         public void HandleEquip(Player player, C_Equip packet)
 		{
@@ -152,6 +132,7 @@ namespace Server.Game
 
 			S_UnEquip unEquipPacket = new S_UnEquip();
 			unEquipPacket.Id = player.ObjectId;
+			unEquipPacket.ItemName = packet.ItemName;
 
 			Broadcast(unEquipPacket);
 		}
@@ -165,7 +146,6 @@ namespace Server.Game
 			newMovePacket.ObjectId = player.Info.ObjectId;
 			newMovePacket.MoveInfo = movePacket.MoveInfo;
 			player.MoveInfo = movePacket.MoveInfo;
-            Console.WriteLine($"{player.Info.ObjectId} 플레이어의 이동 동기화");
 
 			Broadcast(newMovePacket);
 		}

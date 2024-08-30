@@ -18,6 +18,7 @@ namespace TestClient
 			Array.Copy(BitConverter.GetBytes((ushort)msgId), 0, sendBuffer, 2, sizeof(ushort));
 			Array.Copy(packet.ToByteArray(), 0, sendBuffer, 4, size);
 			Send(new ArraySegment<byte>(sendBuffer));
+			TestClient.Program.count++;
 		}
 
 		public override void OnConnected(EndPoint endPoint)

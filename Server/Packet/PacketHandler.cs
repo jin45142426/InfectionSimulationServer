@@ -1,6 +1,5 @@
 ﻿using Google.Protobuf;
 using Google.Protobuf.Protocol;
-using POpusCodec;
 using Server;
 using Server.Game;
 using ServerCore;
@@ -87,38 +86,6 @@ class PacketHandler
 		 
 		room.Push(room.HandleEquip, player, equipPacket);
 	}
-
-    public static void C_EndVoiceHandler(PacketSession session, IMessage packet)
-    {
-		//C_EndVoice voicePacket = (C_EndVoice)packet;
-		//ClientSession clientSession = (ClientSession)session;
-
-		//Player player = clientSession.MyPlayer;
-		//if (player == null)
-		//	return;
-
-		//GameRoom room = player.Room;
-		//if (room == null)
-		//	return;
-
-		//room.Push(room.HandleEndVoice, player, voicePacket);
-    }
-
-    public static void C_VoiceHandler(PacketSession session, IMessage packet)
-    {
-        C_Voice voicePacket = (C_Voice)packet;
-        ClientSession clientSession = (ClientSession)session;
-
-        Player player = clientSession.MyPlayer;
-        if (player == null)
-            return;
-
-        GameRoom room = player.Room;
-        if (room == null)
-            return;
-
-        room.Push(room.HandleVoice, player, voicePacket);
-    }
 
     public static void C_UnEquipHandler(PacketSession session, IMessage packet)
     {

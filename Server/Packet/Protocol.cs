@@ -25,31 +25,31 @@ namespace Google.Protobuf.Protocol {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg5Qcm90b2NvbC5wcm90bxIIUHJvdG9jb2waH2dvb2dsZS9wcm90b2J1Zi90",
-            "aW1lc3RhbXAucHJvdG8iKQoJU19VbkVxdWlwEgoKAmlkGAEgASgFEhAKCGl0",
-            "ZW1OYW1lGAIgASgJIh0KCUNfVW5FcXVpcBIQCghpdGVtTmFtZRgBIAEoCSIn",
-            "CgdTX0VxdWlwEgoKAmlkGAEgASgFEhAKCGl0ZW1OYW1lGAIgASgJIhsKB0Nf",
-            "RXF1aXASEAoIaXRlbU5hbWUYASABKAkiJQoGU19UYWxrEgoKAmlkGAEgASgF",
-            "Eg8KB21lc3NhZ2UYAiABKAkiGQoGQ19UYWxrEg8KB21lc3NhZ2UYASABKAki",
-            "DAoKQ19Db21wbGV0ZSIiCg5TX05leHRQcm9ncmVzcxIQCghwcm9ncmVzcxgB",
-            "IAEoBSInCg9DX1N0YXJ0U2NlbmFyaW8SFAoMc2NlbmFyaW9OYW1lGAEgASgJ",
-            "IicKD1NfU3RhcnRTY2VuYXJpbxIUCgxzY2VuYXJpb05hbWUYASABKAkiLwoH",
-            "Q19Mb2dpbhIkCgh1c2VySW5mbxgBIAEoCzISLlByb3RvY29sLlVzZXJJbmZv",
-            "IjMKC1NfRW50ZXJHYW1lEiQKBnBsYXllchgBIAEoCzIULlByb3RvY29sLk9i",
-            "amVjdEluZm8iDQoLU19MZWF2ZUdhbWUiMAoHU19TcGF3bhIlCgdvYmplY3Rz",
+            "aW1lc3RhbXAucHJvdG8iKQoJU19VbkVxdWlwEgoKAklkGAEgASgFEhAKCEl0",
+            "ZW1OYW1lGAIgASgJIh0KCUNfVW5FcXVpcBIQCghJdGVtTmFtZRgBIAEoCSIn",
+            "CgdTX0VxdWlwEgoKAklkGAEgASgFEhAKCEl0ZW1OYW1lGAIgASgJIhsKB0Nf",
+            "RXF1aXASEAoISXRlbU5hbWUYASABKAkiJQoGU19UYWxrEgoKAklkGAEgASgF",
+            "Eg8KB01lc3NhZ2UYAiABKAkiGQoGQ19UYWxrEg8KB01lc3NhZ2UYASABKAki",
+            "DAoKQ19Db21wbGV0ZSIiCg5TX05leHRQcm9ncmVzcxIQCghQcm9ncmVzcxgB",
+            "IAEoBSInCg9DX1N0YXJ0U2NlbmFyaW8SFAoMU2NlbmFyaW9OYW1lGAEgASgJ",
+            "IicKD1NfU3RhcnRTY2VuYXJpbxIUCgxTY2VuYXJpb05hbWUYASABKAkiLwoH",
+            "Q19Mb2dpbhIkCghVc2VySW5mbxgBIAEoCzISLlByb3RvY29sLlVzZXJJbmZv",
+            "IjMKC1NfRW50ZXJHYW1lEiQKBlBsYXllchgBIAEoCzIULlByb3RvY29sLk9i",
+            "amVjdEluZm8iDQoLU19MZWF2ZUdhbWUiMAoHU19TcGF3bhIlCgdPYmplY3Rz",
             "GAEgAygLMhQuUHJvdG9jb2wuT2JqZWN0SW5mbyIeCglTX0Rlc3Bhd24SEQoJ",
-            "b2JqZWN0SWRzGAEgAygFIi4KBkNfTW92ZRIkCghtb3ZlSW5mbxgBIAEoCzIS",
-            "LlByb3RvY29sLk1vdmVJbmZvIkAKBlNfTW92ZRIQCghvYmplY3RJZBgBIAEo",
-            "BRIkCghtb3ZlSW5mbxgCIAEoCzISLlByb3RvY29sLk1vdmVJbmZvIiwKBkNf",
-            "U3luYxIiCgdwb3NJbmZvGAEgASgLMhEuUHJvdG9jb2wuUG9zSW5mbyI+CgZT",
-            "X1N5bmMSEAoIb2JqZWN0SWQYASABKAUSIgoHcG9zSW5mbxgCIAEoCzIRLlBy",
-            "b3RvY29sLlBvc0luZm8ijgEKCk9iamVjdEluZm8SEAoIb2JqZWN0SWQYASAB",
-            "KAUSJAoIdXNlckluZm8YAiABKAsyEi5Qcm90b2NvbC5Vc2VySW5mbxIkCght",
-            "b3ZlSW5mbxgDIAEoCzISLlByb3RvY29sLk1vdmVJbmZvEiIKB3Bvc0luZm8Y",
-            "BCABKAsyES5Qcm90b2NvbC5Qb3NJbmZvImAKCE1vdmVJbmZvEiYKBXN0YXRl",
-            "GAEgASgOMhcuUHJvdG9jb2wuQ3JlYXR1cmVTdGF0ZRIMCgRkaXJYGAIgASgC",
-            "EgwKBGRpcloYAyABKAISEAoIaW5wdXRCaXQYBCABKAUiMwoHUG9zSW5mbxIM",
-            "CgRwb3NYGAEgASgCEgwKBHBvc1kYAiABKAISDAoEcG9zWhgDIAEoAiI2CghV",
-            "c2VySW5mbxIMCgRuYW1lGAEgASgJEgoKAmlkGAIgASgJEhAKCHBvc2l0aW9u",
+            "T2JqZWN0SWRzGAEgAygFIi4KBkNfTW92ZRIkCghNb3ZlSW5mbxgBIAEoCzIS",
+            "LlByb3RvY29sLk1vdmVJbmZvIkAKBlNfTW92ZRIQCghPYmplY3RJZBgBIAEo",
+            "BRIkCghNb3ZlSW5mbxgCIAEoCzISLlByb3RvY29sLk1vdmVJbmZvIiwKBkNf",
+            "U3luYxIiCgdQb3NJbmZvGAEgASgLMhEuUHJvdG9jb2wuUG9zSW5mbyI+CgZT",
+            "X1N5bmMSEAoIT2JqZWN0SWQYASABKAUSIgoHUG9zSW5mbxgCIAEoCzIRLlBy",
+            "b3RvY29sLlBvc0luZm8ijgEKCk9iamVjdEluZm8SEAoIT2JqZWN0SWQYASAB",
+            "KAUSJAoIVXNlckluZm8YAiABKAsyEi5Qcm90b2NvbC5Vc2VySW5mbxIkCghN",
+            "b3ZlSW5mbxgDIAEoCzISLlByb3RvY29sLk1vdmVJbmZvEiIKB1Bvc0luZm8Y",
+            "BCABKAsyES5Qcm90b2NvbC5Qb3NJbmZvImAKCE1vdmVJbmZvEiYKBVN0YXRl",
+            "GAEgASgOMhcuUHJvdG9jb2wuQ3JlYXR1cmVTdGF0ZRIMCgREaXJYGAIgASgC",
+            "EgwKBERpcloYAyABKAISEAoISW5wdXRCaXQYBCABKAUiMwoHUG9zSW5mbxIM",
+            "CgRQb3NYGAEgASgCEgwKBFBvc1kYAiABKAISDAoEUG9zWhgDIAEoAiI2CghV",
+            "c2VySW5mbxIMCgROYW1lGAEgASgJEgoKAklkGAIgASgJEhAKCFBvc2l0aW9u",
             "GAMgASgJKqcCCgVNc2dJZBIQCgxTX0VOVEVSX0dBTUUQABIQCgxTX0xFQVZF",
             "X0dBTUUQARILCgdTX1NQQVdOEAISDQoJU19ERVNQQVdOEAMSCgoGQ19NT1ZF",
             "EAQSCgoGU19NT1ZFEAUSCgoGQ19TWU5DEAYSCgoGU19TWU5DEAcSCwoHQ19M",
@@ -60,8 +60,8 @@ namespace Google.Protobuf.Protocol {
             "cmVTdGF0ZRIICgRJRExFEAASBwoDUlVOEAESEAoMQ09OVkVSU0FUSU9OEAIS",
             "DwoLVVNJTkdfUEhPTkUQAxILCgdTRVRUSU5HEAQSCQoFQ0xFQU4QBRILCgdQ",
             "SUNLX1VQEAYSEwoPVVNJTkdfSU5WRU5UT1JZEAcSCAoEUFVTSBAIEgcKA1NJ",
-            "VBAJEgoKBlRZUElORxAKKjEKDkdhbWVPYmplY3RUeXBlEggKBE5PTkUQABIK",
-            "CgZQTEFZRVIQARIJCgVOX1BfQxACQhuqAhhHb29nbGUuUHJvdG9idWYuUHJv",
+            "VBAJEgoKBlRZUElORxAKKjEKDkdhbWVPYmplY3RUeXBlEggKBE5vbmUQABIK",
+            "CgZQbGF5ZXIQARIJCgVOX1BfQxACQhuqAhhHb29nbGUuUHJvdG9idWYuUHJv",
             "dG9jb2xiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
@@ -132,8 +132,8 @@ namespace Google.Protobuf.Protocol {
   }
 
   public enum GameObjectType {
-    [pbr::OriginalName("NONE")] None = 0,
-    [pbr::OriginalName("PLAYER")] Player = 1,
+    [pbr::OriginalName("None")] None = 0,
+    [pbr::OriginalName("Player")] Player = 1,
     [pbr::OriginalName("N_P_C")] NPC = 2,
   }
 
@@ -175,7 +175,7 @@ namespace Google.Protobuf.Protocol {
       return new S_UnEquip(this);
     }
 
-    /// <summary>Field number for the "id" field.</summary>
+    /// <summary>Field number for the "Id" field.</summary>
     public const int IdFieldNumber = 1;
     private int id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -186,7 +186,7 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "itemName" field.</summary>
+    /// <summary>Field number for the "ItemName" field.</summary>
     public const int ItemNameFieldNumber = 2;
     private string itemName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -331,7 +331,7 @@ namespace Google.Protobuf.Protocol {
       return new C_UnEquip(this);
     }
 
-    /// <summary>Field number for the "itemName" field.</summary>
+    /// <summary>Field number for the "ItemName" field.</summary>
     public const int ItemNameFieldNumber = 1;
     private string itemName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -461,7 +461,7 @@ namespace Google.Protobuf.Protocol {
       return new S_Equip(this);
     }
 
-    /// <summary>Field number for the "id" field.</summary>
+    /// <summary>Field number for the "Id" field.</summary>
     public const int IdFieldNumber = 1;
     private int id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -472,7 +472,7 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "itemName" field.</summary>
+    /// <summary>Field number for the "ItemName" field.</summary>
     public const int ItemNameFieldNumber = 2;
     private string itemName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -617,7 +617,7 @@ namespace Google.Protobuf.Protocol {
       return new C_Equip(this);
     }
 
-    /// <summary>Field number for the "itemName" field.</summary>
+    /// <summary>Field number for the "ItemName" field.</summary>
     public const int ItemNameFieldNumber = 1;
     private string itemName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -747,7 +747,7 @@ namespace Google.Protobuf.Protocol {
       return new S_Talk(this);
     }
 
-    /// <summary>Field number for the "id" field.</summary>
+    /// <summary>Field number for the "Id" field.</summary>
     public const int IdFieldNumber = 1;
     private int id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -758,7 +758,7 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "message" field.</summary>
+    /// <summary>Field number for the "Message" field.</summary>
     public const int MessageFieldNumber = 2;
     private string message_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -903,7 +903,7 @@ namespace Google.Protobuf.Protocol {
       return new C_Talk(this);
     }
 
-    /// <summary>Field number for the "message" field.</summary>
+    /// <summary>Field number for the "Message" field.</summary>
     public const int MessageFieldNumber = 1;
     private string message_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1133,7 +1133,7 @@ namespace Google.Protobuf.Protocol {
       return new S_NextProgress(this);
     }
 
-    /// <summary>Field number for the "progress" field.</summary>
+    /// <summary>Field number for the "Progress" field.</summary>
     public const int ProgressFieldNumber = 1;
     private int progress_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1262,7 +1262,7 @@ namespace Google.Protobuf.Protocol {
       return new C_StartScenario(this);
     }
 
-    /// <summary>Field number for the "scenarioName" field.</summary>
+    /// <summary>Field number for the "ScenarioName" field.</summary>
     public const int ScenarioNameFieldNumber = 1;
     private string scenarioName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1391,7 +1391,7 @@ namespace Google.Protobuf.Protocol {
       return new S_StartScenario(this);
     }
 
-    /// <summary>Field number for the "scenarioName" field.</summary>
+    /// <summary>Field number for the "ScenarioName" field.</summary>
     public const int ScenarioNameFieldNumber = 1;
     private string scenarioName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1520,7 +1520,7 @@ namespace Google.Protobuf.Protocol {
       return new C_Login(this);
     }
 
-    /// <summary>Field number for the "userInfo" field.</summary>
+    /// <summary>Field number for the "UserInfo" field.</summary>
     public const int UserInfoFieldNumber = 1;
     private global::Google.Protobuf.Protocol.UserInfo userInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1655,7 +1655,7 @@ namespace Google.Protobuf.Protocol {
       return new S_EnterGame(this);
     }
 
-    /// <summary>Field number for the "player" field.</summary>
+    /// <summary>Field number for the "Player" field.</summary>
     public const int PlayerFieldNumber = 1;
     private global::Google.Protobuf.Protocol.ObjectInfo player_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1891,7 +1891,7 @@ namespace Google.Protobuf.Protocol {
       return new S_Spawn(this);
     }
 
-    /// <summary>Field number for the "objects" field.</summary>
+    /// <summary>Field number for the "Objects" field.</summary>
     public const int ObjectsFieldNumber = 1;
     private static readonly pb::FieldCodec<global::Google.Protobuf.Protocol.ObjectInfo> _repeated_objects_codec
         = pb::FieldCodec.ForMessage(10, global::Google.Protobuf.Protocol.ObjectInfo.Parser);
@@ -2012,7 +2012,7 @@ namespace Google.Protobuf.Protocol {
       return new S_Despawn(this);
     }
 
-    /// <summary>Field number for the "objectIds" field.</summary>
+    /// <summary>Field number for the "ObjectIds" field.</summary>
     public const int ObjectIdsFieldNumber = 1;
     private static readonly pb::FieldCodec<int> _repeated_objectIds_codec
         = pb::FieldCodec.ForInt32(10);
@@ -2134,7 +2134,7 @@ namespace Google.Protobuf.Protocol {
       return new C_Move(this);
     }
 
-    /// <summary>Field number for the "moveInfo" field.</summary>
+    /// <summary>Field number for the "MoveInfo" field.</summary>
     public const int MoveInfoFieldNumber = 1;
     private global::Google.Protobuf.Protocol.MoveInfo moveInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2270,7 +2270,7 @@ namespace Google.Protobuf.Protocol {
       return new S_Move(this);
     }
 
-    /// <summary>Field number for the "objectId" field.</summary>
+    /// <summary>Field number for the "ObjectId" field.</summary>
     public const int ObjectIdFieldNumber = 1;
     private int objectId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2281,7 +2281,7 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "moveInfo" field.</summary>
+    /// <summary>Field number for the "MoveInfo" field.</summary>
     public const int MoveInfoFieldNumber = 2;
     private global::Google.Protobuf.Protocol.MoveInfo moveInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2432,7 +2432,7 @@ namespace Google.Protobuf.Protocol {
       return new C_Sync(this);
     }
 
-    /// <summary>Field number for the "posInfo" field.</summary>
+    /// <summary>Field number for the "PosInfo" field.</summary>
     public const int PosInfoFieldNumber = 1;
     private global::Google.Protobuf.Protocol.PosInfo posInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2568,7 +2568,7 @@ namespace Google.Protobuf.Protocol {
       return new S_Sync(this);
     }
 
-    /// <summary>Field number for the "objectId" field.</summary>
+    /// <summary>Field number for the "ObjectId" field.</summary>
     public const int ObjectIdFieldNumber = 1;
     private int objectId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2579,7 +2579,7 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "posInfo" field.</summary>
+    /// <summary>Field number for the "PosInfo" field.</summary>
     public const int PosInfoFieldNumber = 2;
     private global::Google.Protobuf.Protocol.PosInfo posInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2733,7 +2733,7 @@ namespace Google.Protobuf.Protocol {
       return new ObjectInfo(this);
     }
 
-    /// <summary>Field number for the "objectId" field.</summary>
+    /// <summary>Field number for the "ObjectId" field.</summary>
     public const int ObjectIdFieldNumber = 1;
     private int objectId_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2744,7 +2744,7 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "userInfo" field.</summary>
+    /// <summary>Field number for the "UserInfo" field.</summary>
     public const int UserInfoFieldNumber = 2;
     private global::Google.Protobuf.Protocol.UserInfo userInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2755,7 +2755,7 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "moveInfo" field.</summary>
+    /// <summary>Field number for the "MoveInfo" field.</summary>
     public const int MoveInfoFieldNumber = 3;
     private global::Google.Protobuf.Protocol.MoveInfo moveInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2766,7 +2766,7 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "posInfo" field.</summary>
+    /// <summary>Field number for the "PosInfo" field.</summary>
     public const int PosInfoFieldNumber = 4;
     private global::Google.Protobuf.Protocol.PosInfo posInfo_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2964,7 +2964,7 @@ namespace Google.Protobuf.Protocol {
       return new MoveInfo(this);
     }
 
-    /// <summary>Field number for the "state" field.</summary>
+    /// <summary>Field number for the "State" field.</summary>
     public const int StateFieldNumber = 1;
     private global::Google.Protobuf.Protocol.CreatureState state_ = global::Google.Protobuf.Protocol.CreatureState.Idle;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2975,7 +2975,7 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "dirX" field.</summary>
+    /// <summary>Field number for the "DirX" field.</summary>
     public const int DirXFieldNumber = 2;
     private float dirX_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2986,7 +2986,7 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "dirZ" field.</summary>
+    /// <summary>Field number for the "DirZ" field.</summary>
     public const int DirZFieldNumber = 3;
     private float dirZ_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2997,7 +2997,7 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "inputBit" field.</summary>
+    /// <summary>Field number for the "InputBit" field.</summary>
     public const int InputBitFieldNumber = 4;
     private int inputBit_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3176,7 +3176,7 @@ namespace Google.Protobuf.Protocol {
       return new PosInfo(this);
     }
 
-    /// <summary>Field number for the "posX" field.</summary>
+    /// <summary>Field number for the "PosX" field.</summary>
     public const int PosXFieldNumber = 1;
     private float posX_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3187,7 +3187,7 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "posY" field.</summary>
+    /// <summary>Field number for the "PosY" field.</summary>
     public const int PosYFieldNumber = 2;
     private float posY_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3198,7 +3198,7 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "posZ" field.</summary>
+    /// <summary>Field number for the "PosZ" field.</summary>
     public const int PosZFieldNumber = 3;
     private float posZ_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3361,7 +3361,7 @@ namespace Google.Protobuf.Protocol {
       return new UserInfo(this);
     }
 
-    /// <summary>Field number for the "name" field.</summary>
+    /// <summary>Field number for the "Name" field.</summary>
     public const int NameFieldNumber = 1;
     private string name_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3372,7 +3372,7 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "id" field.</summary>
+    /// <summary>Field number for the "Id" field.</summary>
     public const int IdFieldNumber = 2;
     private string id_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3383,7 +3383,7 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "position" field.</summary>
+    /// <summary>Field number for the "Position" field.</summary>
     public const int PositionFieldNumber = 3;
     private string position_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

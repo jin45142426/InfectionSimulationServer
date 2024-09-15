@@ -16,6 +16,7 @@ namespace Server
 
 		public static int recvPacketCount = 0;
 		public static int completePacketCount = 0;
+		public static int packetOverCount = 0;
 
 		static void TickRoom<T>(T room, int tick = 100) where T : JobSerializer
 		{
@@ -32,7 +33,7 @@ namespace Server
 		{
 			var timer = new System.Timers.Timer();
 			timer.Interval = tick;
-            timer.Elapsed += ((s, e) => { Console.WriteLine($"현재까지 받은 패킷 수 : {recvPacketCount} / 처리되지 않은 패킷 수 : {recvPacketCount - completePacketCount}"); });
+            timer.Elapsed += ((s, e) => { if (recvPacketCount - completePacketCount > 10000) packetOverCount++; Console.WriteLine($"현재까지 받은 패킷 수 : {recvPacketCount} / 처리되지 않은 패킷 수 : {recvPacketCount - completePacketCount} / 패킷 과부하 횟수 : {packetOverCount}"); });
 			timer.AutoReset = true;
 			timer.Enabled = true;
 

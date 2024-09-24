@@ -1,6 +1,5 @@
 using Google.Protobuf;
 using Google.Protobuf.Protocol;
-using Server;
 using ServerCore;
 using System;
 using System.Collections.Generic;
@@ -71,9 +70,7 @@ class PacketManager
 			if (_handler.TryGetValue(id, out action))
 				action.Invoke(session, pkt);
 		}
-		Program.recvPacketCount++;
-
-    }
+	}
 
 	public Action<PacketSession, IMessage> GetPacketHandler(ushort id)
 	{

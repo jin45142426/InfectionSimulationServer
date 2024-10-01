@@ -211,6 +211,7 @@ namespace Server.Game
 			S_Talk sTalkPacket = new S_Talk();
 			sTalkPacket.Id = player.ObjectId;
 			sTalkPacket.Message = talkPacket.Message;
+			sTalkPacket.TTSSelf = talkPacket.TTSSelf;
 			Broadcast(sTalkPacket);
         }
 

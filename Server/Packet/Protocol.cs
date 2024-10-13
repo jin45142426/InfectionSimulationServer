@@ -57,14 +57,14 @@ namespace Google.Protobuf.Protocol {
             "X1NUQVJUX1NDRU5BUklPEAkSFAoQU19TVEFSVF9TQ0VOQVJJTxAKEg4KCkNf",
             "Q09NUExFVEUQCxITCg9TX05FWFRfUFJPR1JFU1MQDBIKCgZDX1RBTEsQDRIK",
             "CgZTX1RBTEsQDhILCgdDX0VRVUlQEA8SCwoHU19FUVVJUBAQEg4KCkNfVU5f",
-            "RVFVSVAQERIOCgpTX1VOX0VRVUlQEBIq4QEKDUNyZWF0dXJlU3RhdGUSCAoE",
+            "RVFVSVAQERIOCgpTX1VOX0VRVUlQEBIq7wEKDUNyZWF0dXJlU3RhdGUSCAoE",
             "SURMRRAAEgcKA1JVThABEhAKDENPTlZFUlNBVElPThACEg8KC1VTSU5HX1BI",
             "T05FEAMSCwoHU0VUVElORxAEEgkKBUNMRUFOEAUSCwoHUElDS19VUBAGEhMK",
             "D1VTSU5HX0lOVkVOVE9SWRAHEggKBFBVU0gQCBIHCgNTSVQQCRIKCgZUWVBJ",
             "TkcQChISCg5TV0VFUElOR19GTE9PUhALEhAKDFVTSU5HX1RJU1NVRRAMEg4K",
-            "CkxZSU5HX0lETEUQDRILCgdTWVJJTkdFEA4qMQoOR2FtZU9iamVjdFR5cGUS",
-            "CAoETm9uZRAAEgoKBlBsYXllchABEgkKBU5fUF9DEAJCG6oCGEdvb2dsZS5Q",
-            "cm90b2J1Zi5Qcm90b2NvbGIGcHJvdG8z"));
+            "CkxZSU5HX0lETEUQDRILCgdTWVJJTkdFEA4SDAoIQkxPQ0tJTkcQDyoxCg5H",
+            "YW1lT2JqZWN0VHlwZRIICgROb25lEAASCgoGUGxheWVyEAESCQoFTl9QX0MQ",
+            "AkIbqgIYR29vZ2xlLlByb3RvYnVmLlByb3RvY29sYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.GameObjectType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -135,6 +135,7 @@ namespace Google.Protobuf.Protocol {
     [pbr::OriginalName("USING_TISSUE")] UsingTissue = 12,
     [pbr::OriginalName("LYING_IDLE")] LyingIdle = 13,
     [pbr::OriginalName("SYRINGE")] Syringe = 14,
+    [pbr::OriginalName("BLOCKING")] Blocking = 15,
   }
 
   public enum GameObjectType {

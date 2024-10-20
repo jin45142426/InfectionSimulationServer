@@ -20,15 +20,27 @@ namespace TestClient
 				foreach (ServerSession session in _sessions)
 				{
 					C_Login loginPacket = new C_Login();
-					loginPacket.UserInfo = new UserInfo();
-					loginPacket.UserInfo.Name = count.ToString();
-					loginPacket.UserInfo.Id = count.ToString();
-					loginPacket.UserInfo.Position = "응급센터 간호사1";
 					count++;
 					session.Send(loginPacket);
 				}
 			}
 		}
+
+		public void RegistClients()
+		{
+            lock (_lock)
+            {
+                foreach (ServerSession session in _sessions)
+                {
+					C_RegistAccount registPacket = new C_RegistAccount();
+					registPacket.AccountId = "1";
+                    registPacket.AccountPw = "1";
+					registPacket.PlayerId = "1";
+					registPacket.PlayerName = "1";
+					session.Send(registPacket);
+                }
+            }
+        }
 
 		public void MoveClients()
 		{

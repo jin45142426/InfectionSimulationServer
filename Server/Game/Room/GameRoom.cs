@@ -18,7 +18,9 @@ namespace Server.Game
 
 		Dictionary<int, Player> _players = new Dictionary<int, Player>();
 
-		public void EnterGame(GameObject gameObject)
+        public DateTime EndTime { get; set; }
+
+        public void EnterGame(GameObject gameObject)
 		{
 			if (gameObject == null)
 				return;
@@ -88,6 +90,7 @@ namespace Server.Game
 					return;
 
 				player.Room = null;
+				player.Session.ServerState = PlayerServerState.ServerStateLogin;
 
 				// 본인한테 정보 전송
 				{
@@ -109,7 +112,11 @@ namespace Server.Game
 
 			if(_players.Count == 0)
             {
-				_doingScenario = false;
+                ScenarioProgress = 0;
+                ScenarioName = null;
+                CompleteCount = 0;
+                _doingScenario = false;
+                EndTime = DateTime.MinValue;
             }
 		}
 
@@ -215,7 +222,24 @@ namespace Server.Game
 			Broadcast(sTalkPacket);
         }
 
-		public Player FindPlayer(Func<GameObject, bool> condition)
+        public void HandleEndGame(Player player, C_EndGame game)
+        {
+            if (player == null)
+                return;
+
+			if(EndTime == DateTime.MinValue)
+			{
+				EndTime = DateTime.Now;
+			}
+
+			player.Session.RegisterScore(player.Session.AccountDbId, game.Position, game.FinalScore, game.FaultCount, EndTime);
+			//player에게 해당 Position의 게임기록들 전송, player의 ScoreDbId 따로 전송
+			player.Session.SendScores(player.Session.AccountDbId, game.Position);
+
+			LeaveGame(player.ObjectId);
+        }
+
+        public Player FindPlayer(Func<GameObject, bool> condition)
 		{
 			foreach (Player player in _players.Values)
 			{
@@ -237,5 +261,5 @@ namespace Server.Game
 				p.Session.Send(packet);
 			}
 		}
-	}
+    }
 }

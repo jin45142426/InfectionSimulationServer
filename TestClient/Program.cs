@@ -31,25 +31,27 @@ namespace TestClient
 			Thread.Sleep(1000);
 			connector.Connect(endPoint,
 				() => { return SessionManager.Instance.Generate(); },
-				50);
+				1);
 
 			Profiling(1000);
 
-			SessionManager.Instance.LoginClients();
+			SessionManager.Instance.RegistClients();
 
-			while (true)
-			{
-				try
-				{
-					SessionManager.Instance.MoveClients();
-				}
-				catch (Exception e)
-				{
-					Console.WriteLine(e.ToString());
-				}
+			//SessionManager.Instance.LoginClients();
 
-				Thread.Sleep(20);
-			}
+			//while (true)
+			//{
+			//	try
+			//	{
+			//		SessionManager.Instance.MoveClients();
+			//	}
+			//	catch (Exception e)
+			//	{
+			//		Console.WriteLine(e.ToString());
+			//	}
+
+			//	Thread.Sleep(20);
+			//}
 		}
 	}
 }

@@ -48,28 +48,37 @@ class PacketHandler
     public static void C_LoginHandler(PacketSession session, IMessage packet)
     {
 		C_Login loginPacket = (C_Login)packet;
+
 		ClientSession clientSession = (ClientSession)session;
 
-		GameRoom room = RoomManager.Instance.Find(1);
+        // 로그인 인증 되면 게임씬으로 이동시키기
+        clientSession.HandleLogin(loginPacket.AccountId, loginPacket.AccountPw, loginPacket.Position);
+    }
 
-		Player myPlayer = ObjectManager.Instance.Add<Player>();
-		{
-			clientSession.MyPlayer = myPlayer;
-			myPlayer.Room = room;
-			myPlayer.UserInfo = loginPacket.UserInfo;
-			myPlayer.MoveInfo = new MoveInfo();
-			myPlayer.MoveInfo.State = CreatureState.Idle;
-			myPlayer.MoveInfo.DirX = 0;
-			myPlayer.MoveInfo.DirZ = 0;
-			myPlayer.MoveInfo.InputBit = 0;
-			myPlayer.PosInfo.PosX = 0;
-			myPlayer.PosInfo.PosY = 0;
-			myPlayer.PosInfo.PosX = 0;
-			myPlayer.Session = clientSession;
-		}
-		
-		room.Push(room.EnterGame, myPlayer);
-	}
+	public static void C_EnterGameHandler(PacketSession session, IMessage packet)
+	{
+        C_EnterGame enterPacket = (C_EnterGame)packet;
+        ClientSession clientSession = (ClientSession)session;
+
+        GameRoom room = RoomManager.Instance.Find(enterPacket.RoomId);
+
+        Player myPlayer = ObjectManager.Instance.Add<Player>();
+        {
+            clientSession.MyPlayer = myPlayer;
+            myPlayer.Room = room;
+            myPlayer.MoveInfo = new MoveInfo();
+            myPlayer.MoveInfo.State = CreatureState.Idle;
+            myPlayer.MoveInfo.DirX = 0;
+            myPlayer.MoveInfo.DirZ = 0;
+            myPlayer.MoveInfo.InputBit = 0;
+            myPlayer.PosInfo.PosX = 0;
+            myPlayer.PosInfo.PosY = 0;
+            myPlayer.PosInfo.PosX = 0;
+            myPlayer.Session = clientSession;
+        }
+
+        room.Push(room.EnterGame, myPlayer);
+    }
 
     public static void C_EquipHandler(PacketSession session, IMessage packet)
     {
@@ -119,6 +128,15 @@ class PacketHandler
 		room.Push(room.HandleTalk, player, talkPacket);
 	}
 
+	public static void C_RegistAccountHandler(PacketSession session, IMessage packet)
+	{
+		C_RegistAccount registPacket = (C_RegistAccount)packet;
+
+		ClientSession clientSession = (ClientSession)session;
+
+		clientSession.HandleRegistAccount(registPacket.AccountId, registPacket.AccountPw, registPacket.PlayerId, registPacket.PlayerName);
+	}
+
     public static void C_CompleteHandler(PacketSession session, IMessage packet)
     {
         C_Complete completePacket = (C_Complete)packet;
@@ -149,5 +167,22 @@ class PacketHandler
 			return;
 
 		room.Push(room.HandleScenario, clientSession.MyPlayer, scenarioPacket);
+    }
+
+	public static void C_EndGameHandler(PacketSession session, IMessage packet)
+	{
+        C_EndGame scenarioPacket = (C_EndGame)packet;
+
+        ClientSession clientSession = (ClientSession)session;
+
+        Player player = clientSession.MyPlayer;
+        if (player == null)
+            return;
+
+        GameRoom room = player.Room;
+        if (room == null)
+            return;
+
+        room.Push(room.HandleEndGame, clientSession.MyPlayer, scenarioPacket);
     }
 }

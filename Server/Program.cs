@@ -42,7 +42,7 @@ namespace Server
 
 		static void Main(string[] args)
 		{
-			GameRoom room = RoomManager.Instance.Add(1);
+			GameRoom room = RoomManager.Instance.Add();
 			TickRoom(room, 50);
 
 			string host = Dns.GetHostName();

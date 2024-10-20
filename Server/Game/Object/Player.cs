@@ -10,8 +10,8 @@ namespace Server.Game
 		public ClientSession Session { get; set; }
 
 		public Player()
-		{
-			ObjectType = GameObjectType.Player;
+        {
+            ObjectType = GameObjectType.Player;
 		}
 	}
 }

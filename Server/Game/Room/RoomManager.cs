@@ -12,7 +12,7 @@ namespace Server.Game
 		Dictionary<int, GameRoom> _rooms = new Dictionary<int, GameRoom>();
 		int _roomId = 1;
 
-		public GameRoom Add(int mapId)
+		public GameRoom Add()
 		{
 			GameRoom gameRoom = new GameRoom();
 

@@ -11,9 +11,27 @@ namespace Server.Game
 
 		public GameRoom Room { get; set; }
 
-		#region ObjectInfo Info
+        #region UserInfo UserInfo
 
-		public ObjectInfo Info { get; set; } = new ObjectInfo();
+        public UserInfo UserInfo { get; set; } = new UserInfo();
+
+        public string AccountId
+        {
+            get { return UserInfo.AccountId; }
+            set { UserInfo.AccountId = value; }
+        }
+
+        public string Position
+        {
+            get { return UserInfo.Position; }
+            set { UserInfo.Position = value; }
+        }
+
+        #endregion
+
+        #region ObjectInfo Info
+
+        public ObjectInfo Info { get; set; } = new ObjectInfo();
 
 		public int ObjectId
 		{
@@ -22,30 +40,6 @@ namespace Server.Game
 		}
 
 		#endregion
-
-		#region UserInfo UserInfo
-
-		public UserInfo UserInfo { get; set; } = new UserInfo();
-
-		public string Name
-		{
-			get { return UserInfo.Name; }
-			set { UserInfo.Name = value; }
-		}
-
-        public string Id
-        {
-            get { return UserInfo.Id; }
-            set { UserInfo.Id = value; }
-        }
-
-		public string Position
-        {
-			get { return UserInfo.Position; }
-			set { UserInfo.Position = value; }
-        }
-
-        #endregion
 
         #region MoveInfo MoveInfo
 
@@ -100,9 +94,9 @@ namespace Server.Game
         #endregion
 
         public GameObject()
-		{
-			Info.UserInfo = UserInfo;
-			Info.MoveInfo = MoveInfo;
+        {
+            Info.UserInfo = UserInfo;
+            Info.MoveInfo = MoveInfo;
 			Info.PosInfo = PosInfo;
 		}
 

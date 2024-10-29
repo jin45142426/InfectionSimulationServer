@@ -22,7 +22,7 @@ namespace Server
                 {
                     // AccountId에 해당하는 계정을 찾기
                     var account = db.Accounts
-                        .FirstOrDefault(a => a.AccountId == accountId);
+                        .FirstOrDefault(a => a.Id == accountId);
 
                     if (account == null)
                     {

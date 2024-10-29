@@ -15,7 +15,7 @@ namespace Server
         public string AccountDbId { get; private set; }
 
         // 계정 생성 및 플레이어 등록 처리
-        public void HandleRegistAccount(string accountId, string accountPw, string playerId, string playerName)
+        public void HandleRegistAccount(string accountId, string accountPw, string userName)
         {
             if (ServerState != PlayerServerState.ServerStateLogin)
                 return;
@@ -26,53 +26,32 @@ namespace Server
             {
                 using (AppDbContext db = new AppDbContext())
                 {
-                    // 동일한 PlayerId가 이미 있는지 확인
-                    var existingPlayer = db.Players
-                        .FirstOrDefault(p => p.PlayerId == playerId);
-
-                    // 이미 동일한 AccountId가 있는지 확인
+                    // 이미 동일한 Id가 있는지 확인
                     var existingAccount = db.Accounts
-                        .Include(a => a.Player)
-                        .FirstOrDefault(a => a.AccountId == accountId);
+                        .FirstOrDefault(a => a.Id == accountId);
 
                     // 이미 등록된 사용자일 경우
-                    if (existingPlayer != null)
+                    if (existingAccount != null)
                     {
                         // 이미 등록된 사용자라고 패킷 보내기
-                        registPacket.Result = RegistAccountState.ExistPlayer;
-                        Send(registPacket);
-                        return;
-                    }
-                    // 사용자는 등록되어 있지 않지만, 이미 사용 중인 계정(Id)일 경우
-                    else if (existingAccount != null && existingPlayer == null)
-                    {
-                        // 중복되는 아이디라고 패킷 보내기
                         registPacket.Result = RegistAccountState.ExistAccount;
                         Send(registPacket);
                         return;
                     }
-                    else
+
+                    // 새로운 계정과 플레이어 생성
+                    var newAccount = new AccountDb()
                     {
-                        // 새로운 계정과 플레이어 생성
-                        var newAccount = new AccountDb()
-                        {
-                            AccountId = accountId,
-                            AccountPw = accountPw,
-                            Player = new PlayerDb()
-                            {
-                                PlayerId = playerId,
-                                PlayerName = playerName
-                            }
-                        };
+                        Id = accountId,
+                        Pw = accountPw,
+                        Name = userName
+                    };
 
-                        db.Accounts.Add(newAccount);
-                        registPacket.Result = RegistAccountState.RegistComplete;
-                    }
-
+                    db.Accounts.Add(newAccount);
+                    registPacket.Result = RegistAccountState.RegistComplete;
                     db.SaveChangesEx();
                     // 계정이 생성되었다고 패킷 보내기
                     Send(registPacket);
-
                 }
             }
             catch (Exception ex)
@@ -99,8 +78,7 @@ namespace Server
                 {
                     // AccountId에 해당하는 계정을 찾기
                     var account = db.Accounts
-                        .Include(a => a.Player)
-                        .FirstOrDefault(a => a.AccountId == accountId);
+                        .FirstOrDefault(a => a.Id == accountId);
 
                     // 계정이 존재하지 않는 경우
                     if (account == null)
@@ -111,7 +89,7 @@ namespace Server
                     }
 
                     // 비밀번호가 틀린 경우
-                    if (account.AccountPw != accountPw)
+                    if (account.Pw != accountPw)
                     {
                         loginPacket.Result = LoginState.WrongPassword;
                         Send(loginPacket);
@@ -119,7 +97,7 @@ namespace Server
                     }
 
                     // 로그인 성공
-                    AccountDbId = account.AccountId; // 세션에 계정 DB ID 저장
+                    AccountDbId = account.Id; // 세션에 계정 DB ID 저장
                     ServerState = PlayerServerState.ServerStateGame; // 상태를 게임 플레이 상태로 전환
 
                     GameRoom room = RoomManager.Instance.Find(1);

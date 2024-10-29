@@ -10,7 +10,6 @@ namespace Server.DB
     public class AppDbContext : DbContext
     {
         public DbSet<DataModel.AccountDb> Accounts { get; set; }
-        public DbSet<DataModel.PlayerDb> Players { get; set; }
         public DbSet<DataModel.ScoreDb> Scores { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -23,18 +22,13 @@ namespace Server.DB
         {
             // AccountDb 설정
             modelBuilder.Entity<DataModel.AccountDb>()
-                .Property(a => a.AccountId)
+                .Property(a => a.Id)
                 .IsRequired();  // Null 불가
             modelBuilder.Entity<DataModel.AccountDb>()
-                .Property(a => a.AccountPw)
+                .Property(a => a.Name)
                 .IsRequired();  // Null 불가
-
-            // PlayerDb 설정
-            modelBuilder.Entity<DataModel.PlayerDb>()
-                .Property(p => p.PlayerId)
-                .IsRequired();  // Null 불가
-            modelBuilder.Entity<DataModel.PlayerDb>()
-                .Property(p => p.PlayerName)
+            modelBuilder.Entity<DataModel.AccountDb>()
+                .Property(a => a.Pw)
                 .IsRequired();  // Null 불가
 
             // ScoreDb 설정

@@ -134,7 +134,7 @@ class PacketHandler
 
 		ClientSession clientSession = (ClientSession)session;
 
-		clientSession.HandleRegistAccount(registPacket.AccountId, registPacket.AccountPw, registPacket.PlayerId, registPacket.PlayerName);
+		clientSession.HandleRegistAccount(registPacket.AccountId, registPacket.AccountPw, registPacket.PlayerName);
 	}
 
     public static void C_CompleteHandler(PacketSession session, IMessage packet)

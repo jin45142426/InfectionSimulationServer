@@ -21,36 +21,20 @@ namespace Server.Migrations
 
             modelBuilder.Entity("Server.DB.DataModel+AccountDb", b =>
                 {
-                    b.Property<string>("AccountId")
+                    b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
 
-                    b.Property<string>("AccountPw")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("AccountId");
+                    b.Property<string>("Pw")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Accounts");
-                });
-
-            modelBuilder.Entity("Server.DB.DataModel+PlayerDb", b =>
-                {
-                    b.Property<string>("PlayerId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("AccountId")
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<string>("PlayerName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("PlayerId");
-
-                    b.HasIndex("AccountId")
-                        .IsUnique();
-
-                    b.ToTable("Players");
                 });
 
             modelBuilder.Entity("Server.DB.DataModel+ScoreDb", b =>
@@ -82,15 +66,6 @@ namespace Server.Migrations
                     b.ToTable("Scores");
                 });
 
-            modelBuilder.Entity("Server.DB.DataModel+PlayerDb", b =>
-                {
-                    b.HasOne("Server.DB.DataModel+AccountDb", "Account")
-                        .WithOne("Player")
-                        .HasForeignKey("Server.DB.DataModel+PlayerDb", "AccountId");
-
-                    b.Navigation("Account");
-                });
-
             modelBuilder.Entity("Server.DB.DataModel+ScoreDb", b =>
                 {
                     b.HasOne("Server.DB.DataModel+AccountDb", "Account")
@@ -104,8 +79,6 @@ namespace Server.Migrations
 
             modelBuilder.Entity("Server.DB.DataModel+AccountDb", b =>
                 {
-                    b.Navigation("Player");
-
                     b.Navigation("Scores");
                 });
 #pragma warning restore 612, 618

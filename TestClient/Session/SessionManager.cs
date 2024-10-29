@@ -35,7 +35,6 @@ namespace TestClient
 					C_RegistAccount registPacket = new C_RegistAccount();
 					registPacket.AccountId = "1";
                     registPacket.AccountPw = "1";
-					registPacket.PlayerId = "1";
 					registPacket.PlayerName = "1";
 					session.Send(registPacket);
                 }

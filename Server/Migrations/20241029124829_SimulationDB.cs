@@ -19,36 +19,16 @@ namespace Server.Migrations
                 name: "Accounts",
                 columns: table => new
                 {
-                    AccountId = table.Column<string>(type: "varchar(255)", nullable: false)
+                    Id = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    AccountPw = table.Column<string>(type: "longtext", nullable: false)
+                    Name = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Pw = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Accounts", x => x.AccountId);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "Players",
-                columns: table => new
-                {
-                    PlayerId = table.Column<string>(type: "varchar(255)", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    PlayerName = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    AccountId = table.Column<string>(type: "varchar(255)", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Players", x => x.PlayerId);
-                    table.ForeignKey(
-                        name: "FK_Players_Accounts_AccountId",
-                        column: x => x.AccountId,
-                        principalTable: "Accounts",
-                        principalColumn: "AccountId");
+                    table.PrimaryKey("PK_Accounts", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -73,16 +53,10 @@ namespace Server.Migrations
                         name: "FK_Scores_Accounts_AccountId",
                         column: x => x.AccountId,
                         principalTable: "Accounts",
-                        principalColumn: "AccountId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Players_AccountId",
-                table: "Players",
-                column: "AccountId",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Scores_AccountId",
@@ -93,9 +67,6 @@ namespace Server.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Players");
-
             migrationBuilder.DropTable(
                 name: "Scores");
 

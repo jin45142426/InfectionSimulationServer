@@ -11,7 +11,7 @@ using Server.DB;
 namespace Server.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241029124829_SimulationDB")]
+    [Migration("20241030120513_SimulationDB")]
     partial class SimulationDB
     {
         /// <inheritdoc />
@@ -49,9 +49,6 @@ namespace Server.Migrations
                     b.Property<string>("AccountId")
                         .IsRequired()
                         .HasColumnType("varchar(255)");
-
-                    b.Property<int>("FaultCount")
-                        .HasColumnType("int");
 
                     b.Property<int>("FinalScore")
                         .HasColumnType("int");

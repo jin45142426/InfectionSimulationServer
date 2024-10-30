@@ -28,7 +28,6 @@ namespace Server.DB
             public int ScoreId { get; set; }
             public string Position {  get; set; }   // 수행한 직무
             public int FinalScore { get; set; }  // 최종 점수
-            public int FaultCount { get; set; }  // 실수 횟수
             public DateTime GameDate { get; set; } // 게임이 완료된 날짜 및 시간
 
             // AccountDb와 1:N 관계 설정 (외래 키)

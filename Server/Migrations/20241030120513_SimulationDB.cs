@@ -41,7 +41,6 @@ namespace Server.Migrations
                     Position = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     FinalScore = table.Column<int>(type: "int", nullable: false),
-                    FaultCount = table.Column<int>(type: "int", nullable: false),
                     GameDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     AccountId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")

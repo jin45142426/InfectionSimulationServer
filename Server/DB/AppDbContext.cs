@@ -39,9 +39,6 @@ namespace Server.DB
                 .Property(s => s.FinalScore)
                 .IsRequired();  // Null 불가
             modelBuilder.Entity<DataModel.ScoreDb>()
-                .Property(s => s.FaultCount)
-                .IsRequired();  // Null 불가
-            modelBuilder.Entity<DataModel.ScoreDb>()
                 .Property(s => s.GameDate)
                 .IsRequired();  // Null 불가
             modelBuilder.Entity<DataModel.ScoreDb>()

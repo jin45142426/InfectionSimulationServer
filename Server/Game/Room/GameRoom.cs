@@ -232,7 +232,7 @@ namespace Server.Game
 				EndTime = DateTime.Now;
 			}
 
-			player.Session.RegisterScore(player.Session.AccountDbId, game.Position, game.FinalScore, game.FaultCount, EndTime);
+			player.Session.RegisterScore(player.Session.AccountDbId, game.Position, game.FinalScore, EndTime);
 			//player에게 해당 Position의 게임기록들 전송, player의 ScoreDbId 따로 전송
 			player.Session.SendScores(player.Session.AccountDbId, game.Position);
 

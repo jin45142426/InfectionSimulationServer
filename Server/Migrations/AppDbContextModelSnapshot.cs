@@ -47,9 +47,6 @@ namespace Server.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(255)");
 
-                    b.Property<int>("FaultCount")
-                        .HasColumnType("int");
-
                     b.Property<int>("FinalScore")
                         .HasColumnType("int");
 

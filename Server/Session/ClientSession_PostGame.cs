@@ -14,7 +14,7 @@ namespace Server
     public partial class ClientSession : PacketSession
     {
         // 점수 등록
-        public void RegisterScore(string accountId, string position, int finalScore, int faultCount, DateTime date)
+        public void RegisterScore(string accountId, string position, int finalScore, DateTime date)
         {
             try
             {
@@ -37,7 +37,6 @@ namespace Server
                         Account = account,    // 외래 키 관계 설정
                         Position = position,  // 수행한 직무
                         FinalScore = finalScore,  // 최종 점수
-                        FaultCount = faultCount,  // 실수 횟수
                         GameDate = date   // 게임 완료 날짜 및 시간
                     };
 
@@ -58,6 +57,7 @@ namespace Server
             {
                 // 해당 플레이어의 특정 Position에 대한 모든 점수를 조회
                 var scores = db.Scores
+                    .Include(s => s.Account)
                     .Where(s => s.AccountId == accountId && s.Position == position)
                     .OrderByDescending(s => s.GameDate)  // 날짜 순서대로 정렬
                     .ToList();
@@ -76,9 +76,9 @@ namespace Server
                         ScoreId = score.ScoreId,
                         Position = score.Position,
                         FinalScore = score.FinalScore,
-                        FaultCount = score.FaultCount,
                         GameDate = score.GameDate.Ticks,
-                        AccountId = score.AccountId
+                        AccountId = score.AccountId,
+                        PlayerName = score.Account.Name
                     };
 
                     rankPacket.Scores.Add(scoreInfo);

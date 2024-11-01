@@ -19,6 +19,24 @@ namespace Server.Game
 		Dictionary<int, Player> _players = new Dictionary<int, Player>();
 
         public DateTime EndTime { get; set; }
+		int _scenarioSyncCounter = 0;
+
+        public override void Update()
+        {
+            base.Update();
+
+			if(_scenarioSyncCounter >= 20)
+			{
+                S_NextProgress processPacket = new S_NextProgress();
+                processPacket.Progress = ScenarioProgress;
+                Broadcast(processPacket);
+				_scenarioSyncCounter = 0;
+            }
+			else
+			{
+				_scenarioSyncCounter++;
+			}
+        }
 
         public void EnterGame(GameObject gameObject)
 		{
@@ -166,7 +184,6 @@ namespace Server.Game
 			newSyncPacket.ObjectId = player.Info.ObjectId;
 			newSyncPacket.PosInfo = syncPacket.PosInfo;
 			player.PosInfo = syncPacket.PosInfo;
-            Console.WriteLine($"{player.Info.ObjectId} 플레이어의 위치 ({player.PosInfo.PosX}, {player.PosInfo.PosY}, {player.PosInfo.PosX}) 동기화");
 
 			Broadcast(newSyncPacket);
 

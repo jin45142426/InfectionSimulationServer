@@ -69,21 +69,21 @@ namespace Google.Protobuf.Protocol {
             "TEsQDRIKCgZTX1RBTEsQDhILCgdDX0VRVUlQEA8SCwoHU19FUVVJUBAQEg4K",
             "CkNfVU5fRVFVSVAQERIOCgpTX1VOX0VRVUlQEBISFAoQQ19SRUdJU1RfQUND",
             "T1VOVBATEhQKEFNfUkVHSVNUX0FDQ09VTlQQFBIQCgxDX0VOVEVSX0dBTUUQ",
-            "FRILCgdTX0xPR0lOEBYSDgoKQ19FTkRfR0FNRRAXEgoKBlNfUkFOSxAYKvgB",
+            "FRILCgdTX0xPR0lOEBYSDgoKQ19FTkRfR0FNRRAXEgoKBlNfUkFOSxAYKoYC",
             "Cg1DcmVhdHVyZVN0YXRlEggKBElETEUQABIHCgNSVU4QARIQCgxDT05WRVJT",
             "QVRJT04QAhIPCgtVU0lOR19QSE9ORRADEgsKB1NFVFRJTkcQBBIJCgVDTEVB",
             "ThAFEgsKB1BJQ0tfVVAQBhITCg9VU0lOR19JTlZFTlRPUlkQBxIICgRQVVNI",
             "EAgSBwoDU0lUEAkSCgoGVFlQSU5HEAoSEgoOU1dFRVBJTkdfRkxPT1IQCxIQ",
             "CgxVU0lOR19USVNTVUUQDBIOCgpMWUlOR19JRExFEA0SCwoHU1lSSU5HRRAO",
-            "EgwKCEJMT0NLSU5HEA8SBwoDRU1SEBAqWgoRUGxheWVyU2VydmVyU3RhdGUS",
-            "FgoSU0VSVkVSX1NUQVRFX0xPR0lOEAASFgoSU0VSVkVSX1NUQVRFX0xPQkJZ",
-            "EAESFQoRU0VSVkVSX1NUQVRFX0dBTUUQAipVCgpMb2dpblN0YXRlEg4KCk5P",
-            "X0FDQ09VTlQQABISCg5XUk9OR19QQVNTV09SRBABEhIKDkxPR0lOX0NPTVBM",
-            "RVRFEAISDwoLTE9HSU5fRVJST1IQAypgChJSZWdpc3RBY2NvdW50U3RhdGUS",
-            "EAoMRVhJU1RfUExBWUVSEAASEQoNRVhJU1RfQUNDT1VOVBABEhMKD1JFR0lT",
-            "VF9DT01QTEVURRACEhAKDFJFR0lTVF9FUlJPUhADKjEKDkdhbWVPYmplY3RU",
-            "eXBlEggKBE5vbmUQABIKCgZQbGF5ZXIQARIJCgVOX1BfQxACQhuqAhhHb29n",
-            "bGUuUHJvdG9idWYuUHJvdG9jb2xiBnByb3RvMw=="));
+            "EgwKCEJMT0NLSU5HEA8SBwoDRU1SEBASDAoIRFJZX1NXQUIQESpaChFQbGF5",
+            "ZXJTZXJ2ZXJTdGF0ZRIWChJTRVJWRVJfU1RBVEVfTE9HSU4QABIWChJTRVJW",
+            "RVJfU1RBVEVfTE9CQlkQARIVChFTRVJWRVJfU1RBVEVfR0FNRRACKlUKCkxv",
+            "Z2luU3RhdGUSDgoKTk9fQUNDT1VOVBAAEhIKDldST05HX1BBU1NXT1JEEAES",
+            "EgoOTE9HSU5fQ09NUExFVEUQAhIPCgtMT0dJTl9FUlJPUhADKmAKElJlZ2lz",
+            "dEFjY291bnRTdGF0ZRIQCgxFWElTVF9QTEFZRVIQABIRCg1FWElTVF9BQ0NP",
+            "VU5UEAESEwoPUkVHSVNUX0NPTVBMRVRFEAISEAoMUkVHSVNUX0VSUk9SEAMq",
+            "MQoOR2FtZU9iamVjdFR5cGUSCAoETm9uZRAAEgoKBlBsYXllchABEgkKBU5f",
+            "UF9DEAJCG6oCGEdvb2dsZS5Qcm90b2J1Zi5Qcm90b2NvbGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.PlayerServerState), typeof(global::Google.Protobuf.Protocol.LoginState), typeof(global::Google.Protobuf.Protocol.RegistAccountState), typeof(global::Google.Protobuf.Protocol.GameObjectType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -169,6 +169,7 @@ namespace Google.Protobuf.Protocol {
     [pbr::OriginalName("SYRINGE")] Syringe = 14,
     [pbr::OriginalName("BLOCKING")] Blocking = 15,
     [pbr::OriginalName("EMR")] Emr = 16,
+    [pbr::OriginalName("DRY_SWAB")] DrySwab = 17,
   }
 
   public enum PlayerServerState {

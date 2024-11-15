@@ -65,10 +65,15 @@ namespace Server
                 // 최근 등록된 점수 (최신 점수)
                 var recentScore = scores.FirstOrDefault();
 
-                // 클라이언트에 보낼 패킷 생성
-                S_Rank rankPacket = new S_Rank();
+                if (recentScore == null)
+                {
+                    // 만약 점수가 없다면 그냥 반환
+                    return;
+                }
 
-                // 모든 기록을 패킷에 추가
+                // 클라이언트에 보낼 패킷 생성
+                S_PlayerRank rankPacket = new S_PlayerRank();
+
                 foreach (var score in scores)
                 {
                     ScoreInfo scoreInfo = new ScoreInfo()
@@ -78,12 +83,16 @@ namespace Server
                         FinalScore = score.FinalScore,
                         GameDate = score.GameDate.Ticks,
                         AccountId = score.AccountId,
-                        PlayerName = score.Account.Name
+                        PlayerName = score.Account.Name,
                     };
 
                     rankPacket.Scores.Add(scoreInfo);
                 }
 
+                // 패킷의 GameId는 최근 점수의 ScoreId로 설정
+                rankPacket.GameId = recentScore.ScoreId;
+
+                // 클라이언트로 패킷 전송
                 Send(rankPacket);
             }
         }

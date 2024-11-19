@@ -102,6 +102,13 @@ namespace Server
 
                     GameRoom room = RoomManager.Instance.Find(1);
 
+                    if (room.DoingScenario)
+                    {
+                        loginPacket.Result = LoginState.AlreadyStart;
+                        Send(loginPacket);
+                        return;
+                    }
+
                     Player myPlayer = ObjectManager.Instance.Add<Player>();
                     {
                         MyPlayer = myPlayer;

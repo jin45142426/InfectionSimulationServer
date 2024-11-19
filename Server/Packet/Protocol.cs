@@ -79,13 +79,14 @@ namespace Google.Protobuf.Protocol {
             "VVNJTkdfVElTU1VFEAwSDgoKTFlJTkdfSURMRRANEgsKB1NZUklOR0UQDhIM",
             "CghCTE9DS0lORxAPEgcKA0VNUhAQEgwKCERSWV9TV0FCEBEqWgoRUGxheWVy",
             "U2VydmVyU3RhdGUSFgoSU0VSVkVSX1NUQVRFX0xPR0lOEAASFgoSU0VSVkVS",
-            "X1NUQVRFX0xPQkJZEAESFQoRU0VSVkVSX1NUQVRFX0dBTUUQAipVCgpMb2dp",
+            "X1NUQVRFX0xPQkJZEAESFQoRU0VSVkVSX1NUQVRFX0dBTUUQAipoCgpMb2dp",
             "blN0YXRlEg4KCk5PX0FDQ09VTlQQABISCg5XUk9OR19QQVNTV09SRBABEhIK",
-            "DkxPR0lOX0NPTVBMRVRFEAISDwoLTE9HSU5fRVJST1IQAypgChJSZWdpc3RB",
-            "Y2NvdW50U3RhdGUSEAoMRVhJU1RfUExBWUVSEAASEQoNRVhJU1RfQUNDT1VO",
-            "VBABEhMKD1JFR0lTVF9DT01QTEVURRACEhAKDFJFR0lTVF9FUlJPUhADKjEK",
-            "DkdhbWVPYmplY3RUeXBlEggKBE5vbmUQABIKCgZQbGF5ZXIQARIJCgVOX1Bf",
-            "QxACQhuqAhhHb29nbGUuUHJvdG9idWYuUHJvdG9jb2xiBnByb3RvMw=="));
+            "DkxPR0lOX0NPTVBMRVRFEAISEQoNQUxSRUFEWV9TVEFSVBADEg8KC0xPR0lO",
+            "X0VSUk9SEAQqYAoSUmVnaXN0QWNjb3VudFN0YXRlEhAKDEVYSVNUX1BMQVlF",
+            "UhAAEhEKDUVYSVNUX0FDQ09VTlQQARITCg9SRUdJU1RfQ09NUExFVEUQAhIQ",
+            "CgxSRUdJU1RfRVJST1IQAyoxCg5HYW1lT2JqZWN0VHlwZRIICgROb25lEAAS",
+            "CgoGUGxheWVyEAESCQoFTl9QX0MQAkIbqgIYR29vZ2xlLlByb3RvYnVmLlBy",
+            "b3RvY29sYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.PlayerServerState), typeof(global::Google.Protobuf.Protocol.LoginState), typeof(global::Google.Protobuf.Protocol.RegistAccountState), typeof(global::Google.Protobuf.Protocol.GameObjectType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -186,7 +187,8 @@ namespace Google.Protobuf.Protocol {
     [pbr::OriginalName("NO_ACCOUNT")] NoAccount = 0,
     [pbr::OriginalName("WRONG_PASSWORD")] WrongPassword = 1,
     [pbr::OriginalName("LOGIN_COMPLETE")] LoginComplete = 2,
-    [pbr::OriginalName("LOGIN_ERROR")] LoginError = 3,
+    [pbr::OriginalName("ALREADY_START")] AlreadyStart = 3,
+    [pbr::OriginalName("LOGIN_ERROR")] LoginError = 4,
   }
 
   public enum RegistAccountState {

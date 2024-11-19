@@ -14,7 +14,7 @@ namespace Server.Game
 		public string ScenarioName { get; set; }
 		public int CompleteCount { get; set; } = 0;
 
-		bool _doingScenario = false;
+		public bool DoingScenario = false;
 
 		Dictionary<int, Player> _players = new Dictionary<int, Player>();
 
@@ -133,7 +133,7 @@ namespace Server.Game
                 ScenarioProgress = 0;
                 ScenarioName = null;
                 CompleteCount = 0;
-                _doingScenario = false;
+                DoingScenario = false;
                 EndTime = DateTime.MinValue;
             }
 		}
@@ -194,10 +194,10 @@ namespace Server.Game
 			if (player == null)
 				return;
 
-			if (_doingScenario == true)
+			if (DoingScenario == true)
 				return;
 
-			_doingScenario = true;
+			DoingScenario = true;
 
 			this.ScenarioProgress = 0;
 			this.ScenarioName = packet.ScenarioName;

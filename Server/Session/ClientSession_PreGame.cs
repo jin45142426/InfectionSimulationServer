@@ -96,10 +96,6 @@ namespace Server
                         return;
                     }
 
-                    // 로그인 성공
-                    AccountDbId = account.Id; // 세션에 계정 DB ID 저장
-                    ServerState = PlayerServerState.ServerStateGame; // 상태를 게임 플레이 상태로 전환
-
                     GameRoom room = RoomManager.Instance.Find(1);
 
                     if (room.DoingScenario)
@@ -108,6 +104,10 @@ namespace Server
                         Send(loginPacket);
                         return;
                     }
+
+                    // 로그인 성공
+                    AccountDbId = account.Id; // 세션에 계정 DB ID 저장
+                    ServerState = PlayerServerState.ServerStateGame; // 상태를 게임 플레이 상태로 전환
 
                     Player myPlayer = ObjectManager.Instance.Add<Player>();
                     {

@@ -79,14 +79,14 @@ namespace Google.Protobuf.Protocol {
             "VVNJTkdfVElTU1VFEAwSDgoKTFlJTkdfSURMRRANEgsKB1NZUklOR0UQDhIM",
             "CghCTE9DS0lORxAPEgcKA0VNUhAQEgwKCERSWV9TV0FCEBEqWgoRUGxheWVy",
             "U2VydmVyU3RhdGUSFgoSU0VSVkVSX1NUQVRFX0xPR0lOEAASFgoSU0VSVkVS",
-            "X1NUQVRFX0xPQkJZEAESFQoRU0VSVkVSX1NUQVRFX0dBTUUQAipoCgpMb2dp",
-            "blN0YXRlEg4KCk5PX0FDQ09VTlQQABISCg5XUk9OR19QQVNTV09SRBABEhIK",
-            "DkxPR0lOX0NPTVBMRVRFEAISEQoNQUxSRUFEWV9TVEFSVBADEg8KC0xPR0lO",
-            "X0VSUk9SEAQqYAoSUmVnaXN0QWNjb3VudFN0YXRlEhAKDEVYSVNUX1BMQVlF",
-            "UhAAEhEKDUVYSVNUX0FDQ09VTlQQARITCg9SRUdJU1RfQ09NUExFVEUQAhIQ",
-            "CgxSRUdJU1RfRVJST1IQAyoxCg5HYW1lT2JqZWN0VHlwZRIICgROb25lEAAS",
-            "CgoGUGxheWVyEAESCQoFTl9QX0MQAkIbqgIYR29vZ2xlLlByb3RvYnVmLlBy",
-            "b3RvY29sYgZwcm90bzM="));
+            "X1NUQVRFX0xPQkJZEAESFQoRU0VSVkVSX1NUQVRFX0dBTUUQAiqCAQoKTG9n",
+            "aW5TdGF0ZRIOCgpOT19BQ0NPVU5UEAASEgoOV1JPTkdfUEFTU1dPUkQQARIS",
+            "Cg5MT0dJTl9DT01QTEVURRACEhEKDUFMUkVBRFlfU1RBUlQQAxIYChREVVBM",
+            "SUNBVElPTl9QT1NJVElPThAEEg8KC0xPR0lOX0VSUk9SEAUqYAoSUmVnaXN0",
+            "QWNjb3VudFN0YXRlEhAKDEVYSVNUX1BMQVlFUhAAEhEKDUVYSVNUX0FDQ09V",
+            "TlQQARITCg9SRUdJU1RfQ09NUExFVEUQAhIQCgxSRUdJU1RfRVJST1IQAyox",
+            "Cg5HYW1lT2JqZWN0VHlwZRIICgROb25lEAASCgoGUGxheWVyEAESCQoFTl9Q",
+            "X0MQAkIbqgIYR29vZ2xlLlByb3RvYnVmLlByb3RvY29sYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.PlayerServerState), typeof(global::Google.Protobuf.Protocol.LoginState), typeof(global::Google.Protobuf.Protocol.RegistAccountState), typeof(global::Google.Protobuf.Protocol.GameObjectType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -188,7 +188,8 @@ namespace Google.Protobuf.Protocol {
     [pbr::OriginalName("WRONG_PASSWORD")] WrongPassword = 1,
     [pbr::OriginalName("LOGIN_COMPLETE")] LoginComplete = 2,
     [pbr::OriginalName("ALREADY_START")] AlreadyStart = 3,
-    [pbr::OriginalName("LOGIN_ERROR")] LoginError = 4,
+    [pbr::OriginalName("DUPLICATION_POSITION")] DuplicationPosition = 4,
+    [pbr::OriginalName("LOGIN_ERROR")] LoginError = 5,
   }
 
   public enum RegistAccountState {

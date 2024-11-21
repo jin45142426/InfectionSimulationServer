@@ -98,6 +98,16 @@ namespace Server
 
                     GameRoom room = RoomManager.Instance.Find(1);
 
+                    foreach(var player in room.Players.Values)
+                    {
+                        if(player.Position == position)
+                        {
+                            loginPacket.Result = LoginState.DuplicationPosition;
+                            Send(loginPacket);
+                            return;
+                        }
+                    }
+
                     if (room.DoingScenario)
                     {
                         loginPacket.Result = LoginState.AlreadyStart;

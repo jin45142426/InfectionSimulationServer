@@ -16,7 +16,7 @@ namespace Server.Game
 
 		public bool DoingScenario = false;
 
-		Dictionary<int, Player> _players = new Dictionary<int, Player>();
+		public Dictionary<int, Player> Players = new Dictionary<int, Player>();
 
         public DateTime EndTime { get; set; }
 		int _scenarioSyncCounter = 0;
@@ -48,7 +48,7 @@ namespace Server.Game
 			if (type == GameObjectType.Player)
 			{
 				Player player = gameObject as Player;
-				_players.Add(gameObject.ObjectId, player);
+				Players.Add(gameObject.ObjectId, player);
 				player.Room = this;
 
 
@@ -63,7 +63,7 @@ namespace Server.Game
 					player.Session.Send(enterPacket);
 
 					S_Spawn spawnPacket = new S_Spawn();
-					foreach (Player p in _players.Values)
+					foreach (Player p in Players.Values)
 					{
 						if (player != p)
                         {
@@ -89,7 +89,7 @@ namespace Server.Game
 				newObject.MoveInfo = gameObject.MoveInfo;
 				newObject.PosInfo = gameObject.PosInfo;
 				spawnPacket.Objects.Add(newObject);
-				foreach (Player p in _players.Values)
+				foreach (Player p in Players.Values)
 				{
 					if (p.ObjectId != gameObject.ObjectId)
 						p.Session.Send(spawnPacket);
@@ -104,7 +104,7 @@ namespace Server.Game
 			if (type == GameObjectType.Player)
 			{
 				Player player = null;
-				if (_players.Remove(objectId, out player) == false)
+				if (Players.Remove(objectId, out player) == false)
 					return;
 
 				player.Room = null;
@@ -121,14 +121,14 @@ namespace Server.Game
 			{
 				S_Despawn despawnPacket = new S_Despawn();
 				despawnPacket.ObjectIds.Add(objectId);
-				foreach (Player p in _players.Values)
+				foreach (Player p in Players.Values)
 				{
 					if (p.ObjectId != objectId)
 						p.Session.Send(despawnPacket);
 				}
 			}
 
-			if(_players.Count == 0)
+			if(Players.Count == 0)
             {
                 ScenarioProgress = 0;
                 ScenarioName = null;
@@ -218,7 +218,7 @@ namespace Server.Game
 
 			CompleteCount++;
 
-			if(CompleteCount >= _players.Count)
+			if(CompleteCount >= Players.Count)
             {
 				S_NextProgress processPacket = new S_NextProgress();
 				processPacket.Progress = ++ScenarioProgress;
@@ -258,7 +258,7 @@ namespace Server.Game
 
         public Player FindPlayer(Func<GameObject, bool> condition)
 		{
-			foreach (Player player in _players.Values)
+			foreach (Player player in Players.Values)
 			{
 				if (condition.Invoke(player))
 					return player;
@@ -269,7 +269,7 @@ namespace Server.Game
 
 		public void Broadcast(IMessage packet, bool includeSender = true, Player sender = null)
 		{
-			foreach (Player p in _players.Values)
+			foreach (Player p in Players.Values)
 			{
 				if (includeSender == false && sender != null)
 					if (p == sender)

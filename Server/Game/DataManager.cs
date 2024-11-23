@@ -12,6 +12,16 @@ namespace Server.Game
     {
         public static Dictionary<string, List<ScenarioInfo>> ScenarioDict { get; set; } = new Dictionary<string, List<ScenarioInfo>>();
 
+        public static readonly List<string> Positions = new List<string>()
+        {
+            "응급센터 간호사1",
+            "응급센터 간호사2",
+            "응급의학과 의사",
+            "감염관리팀 간호사",
+            "영상의학팀 방사선사",
+            "감염병대응센터 주무관"
+        };
+
         public static void LoadData()
         {
             ScenarioDict = LoadJson<ScenarioInfo>("엠폭스");

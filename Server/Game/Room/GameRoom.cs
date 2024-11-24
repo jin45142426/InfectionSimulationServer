@@ -203,10 +203,20 @@ namespace Server.Game
 			this.ScenarioName = packet.ScenarioName;
 			this.CompleteCount = 0;
 
-			S_StartScenario startPacket = new S_StartScenario();
-			startPacket.ScenarioName = packet.ScenarioName;
+			List<string> lackPositions = new List<string>(DataManager.Positions);
+			foreach(var p in Players.Values)
+			{
+                if (lackPositions.Contains(p.Position))
+				{
+					lackPositions.Remove(p.Position);
+				}
+            }
 
-			Broadcast(startPacket);
+            S_StartScenario startPacket = new S_StartScenario();
+            startPacket.ScenarioName = packet.ScenarioName;
+			startPacket.LackPositions.AddRange(lackPositions);
+
+            Broadcast(startPacket);
 
             Console.WriteLine($"{RoomId}방에서 {ScenarioName} 훈련 시나리오 시작");
         }

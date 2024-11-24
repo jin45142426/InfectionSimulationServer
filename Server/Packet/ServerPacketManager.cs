@@ -41,10 +41,24 @@ class PacketManager
 		_handler.Add((ushort)MsgId.CUnEquip, PacketHandler.C_UnEquipHandler);		
 		_onRecv.Add((ushort)MsgId.CRegistAccount, MakePacket<C_RegistAccount>);
 		_handler.Add((ushort)MsgId.CRegistAccount, PacketHandler.C_RegistAccountHandler);		
-		_onRecv.Add((ushort)MsgId.CEnterGame, MakePacket<C_EnterGame>);
-		_handler.Add((ushort)MsgId.CEnterGame, PacketHandler.C_EnterGameHandler);		
 		_onRecv.Add((ushort)MsgId.CEndGame, MakePacket<C_EndGame>);
-		_handler.Add((ushort)MsgId.CEndGame, PacketHandler.C_EndGameHandler);
+		_handler.Add((ushort)MsgId.CEndGame, PacketHandler.C_EndGameHandler);		
+		_onRecv.Add((ushort)MsgId.CRequestRoomList, MakePacket<C_RequestRoomList>);
+		_handler.Add((ushort)MsgId.CRequestRoomList, PacketHandler.C_RequestRoomListHandler);		
+		_onRecv.Add((ushort)MsgId.CLeaveLobby, MakePacket<C_LeaveLobby>);
+		_handler.Add((ushort)MsgId.CLeaveLobby, PacketHandler.C_LeaveLobbyHandler);		
+		_onRecv.Add((ushort)MsgId.CMakeRoom, MakePacket<C_MakeRoom>);
+		_handler.Add((ushort)MsgId.CMakeRoom, PacketHandler.C_MakeRoomHandler);		
+		_onRecv.Add((ushort)MsgId.CLeaveRoom, MakePacket<C_LeaveRoom>);
+		_handler.Add((ushort)MsgId.CLeaveRoom, PacketHandler.C_LeaveRoomHandler);		
+		_onRecv.Add((ushort)MsgId.CRequestRoomInfo, MakePacket<C_RequestRoomInfo>);
+		_handler.Add((ushort)MsgId.CRequestRoomInfo, PacketHandler.C_RequestRoomInfoHandler);		
+		_onRecv.Add((ushort)MsgId.CChangePosition, MakePacket<C_ChangePosition>);
+		_handler.Add((ushort)MsgId.CChangePosition, PacketHandler.C_ChangePositionHandler);		
+		_onRecv.Add((ushort)MsgId.CEnterRoom, MakePacket<C_EnterRoom>);
+		_handler.Add((ushort)MsgId.CEnterRoom, PacketHandler.C_EnterRoomHandler);		
+		_onRecv.Add((ushort)MsgId.CStartSimulation, MakePacket<C_StartSimulation>);
+		_handler.Add((ushort)MsgId.CStartSimulation, PacketHandler.C_StartSimulationHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

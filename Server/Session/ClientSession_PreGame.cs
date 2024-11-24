@@ -6,6 +6,7 @@ using Server.Game;
 using ServerCore;
 using System;
 using System.Linq;
+using System.Security.Principal;
 using static Server.DB.DataModel;
 
 namespace Server
@@ -13,6 +14,7 @@ namespace Server
     public partial class ClientSession : PacketSession
     {
         public string AccountDbId { get; private set; }
+        public string AccountDbName { get; private set; }
 
         // 계정 생성 및 플레이어 등록 처리
         public void HandleRegistAccount(string accountId, string accountPw, string userName)
@@ -96,47 +98,54 @@ namespace Server
                         return;
                     }
 
-                    GameRoom room = RoomManager.Instance.Find(1);
+                    //GameRoom room = RoomManager.Instance.Find(1);
 
-                    foreach(var player in room.Players.Values)
-                    {
-                        if(player.Position == position)
-                        {
-                            loginPacket.Result = LoginState.DuplicationPosition;
-                            Send(loginPacket);
-                            return;
-                        }
-                    }
+                    //foreach(var player in room.Players.Values)
+                    //{
+                    //    if(player.Position == position)
+                    //    {
+                    //        loginPacket.Result = LoginState.DuplicationPosition;
+                    //        Send(loginPacket);
+                    //        return;
+                    //    }
+                    //}
 
-                    if (room.DoingScenario)
-                    {
-                        loginPacket.Result = LoginState.AlreadyStart;
-                        Send(loginPacket);
-                        return;
-                    }
+                    //if (room.DoingScenario)
+                    //{
+                    //    loginPacket.Result = LoginState.AlreadyStart;
+                    //    Send(loginPacket);
+                    //    return;
+                    //}
 
                     // 로그인 성공
                     AccountDbId = account.Id; // 세션에 계정 DB ID 저장
-                    ServerState = PlayerServerState.ServerStateGame; // 상태를 게임 플레이 상태로 전환
+                    AccountDbName = account.Name; // 세션에 계정 DB Name 저장
+                    ServerState = PlayerServerState.ServerStateLobby; // 로비 상태로 변경
 
-                    Player myPlayer = ObjectManager.Instance.Add<Player>();
-                    {
-                        MyPlayer = myPlayer;
-                        myPlayer.Room = room;
-                        myPlayer.MoveInfo = new MoveInfo();
-                        myPlayer.MoveInfo.State = CreatureState.Idle;
-                        myPlayer.MoveInfo.DirX = 0;
-                        myPlayer.MoveInfo.DirZ = 0;
-                        myPlayer.MoveInfo.InputBit = 0;
-                        myPlayer.PosInfo.PosX = 0;
-                        myPlayer.PosInfo.PosY = 0;
-                        myPlayer.PosInfo.PosX = 0;
-                        myPlayer.UserInfo.Position = position;
-                        myPlayer.UserInfo.AccountId = accountId;
-                        myPlayer.Session = this;
-                    }
+                    loginPacket.Result = LoginState.LoginComplete;
+                    Send(loginPacket);
 
-                    room.Push(room.EnterGame, myPlayer);
+                    Program.Lobby.EnterLobby(this);
+                    return;
+
+                    //Player myPlayer = ObjectManager.Instance.Add<Player>();
+                    //{
+                    //    MyPlayer = myPlayer;
+                    //    myPlayer.Room = room;
+                    //    myPlayer.MoveInfo = new MoveInfo();
+                    //    myPlayer.MoveInfo.State = CreatureState.Idle;
+                    //    myPlayer.MoveInfo.DirX = 0;
+                    //    myPlayer.MoveInfo.DirZ = 0;
+                    //    myPlayer.MoveInfo.InputBit = 0;
+                    //    myPlayer.PosInfo.PosX = 0;
+                    //    myPlayer.PosInfo.PosY = 0;
+                    //    myPlayer.PosInfo.PosX = 0;
+                    //    myPlayer.UserInfo.Position = position;
+                    //    myPlayer.UserInfo.AccountId = accountId;
+                    //    myPlayer.Session = this;
+                    //}
+
+                    //room.Push(room.EnterGame, myPlayer);
                 }
             }
             catch(Exception ex)

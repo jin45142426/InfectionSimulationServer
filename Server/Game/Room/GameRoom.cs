@@ -108,7 +108,8 @@ namespace Server.Game
 					return;
 
 				player.Room = null;
-				player.Session.ServerState = PlayerServerState.ServerStateLogin;
+				player.Session.ServerState = PlayerServerState.ServerStateLobby;
+				player.Session.MyPlayer = null;
 
 				// 본인한테 정보 전송
 				{
@@ -135,6 +136,7 @@ namespace Server.Game
                 CompleteCount = 0;
                 DoingScenario = false;
                 EndTime = DateTime.MinValue;
+				RoomManager.Instance.Remove(RoomId);
             }
 		}
 
@@ -200,7 +202,6 @@ namespace Server.Game
 			DoingScenario = true;
 
 			this.ScenarioProgress = 0;
-			this.ScenarioName = packet.ScenarioName;
 			this.CompleteCount = 0;
 
 			List<string> lackPositions = new List<string>(DataManager.Positions);
@@ -213,7 +214,7 @@ namespace Server.Game
             }
 
             S_StartScenario startPacket = new S_StartScenario();
-            startPacket.ScenarioName = packet.ScenarioName;
+            startPacket.ScenarioName = ScenarioName;
 			startPacket.LackPositions.AddRange(lackPositions);
 
             Broadcast(startPacket);

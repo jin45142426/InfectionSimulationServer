@@ -21,7 +21,8 @@ namespace Server.Game
 				gameRoom.RoomId = _roomId;
 				_rooms.Add(_roomId, gameRoom);
 				_roomId++;
-			}
+                Program.TickRoom(gameRoom, 50);
+            }
 
 			return gameRoom;
 		}
@@ -30,6 +31,7 @@ namespace Server.Game
 		{
 			lock (_lock)
 			{
+				Program.StopTickRoom(_rooms[roomId]);
 				return _rooms.Remove(roomId);
 			}
 		}

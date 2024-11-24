@@ -48,6 +48,8 @@ namespace Server
 			if(MyPlayer != null)
 				room.Push(room.LeaveGame, MyPlayer.Info.ObjectId);
 
+			Program.Lobby.Disconnect(this);
+
 			SessionManager.Instance.Remove(this);
 
 			Console.WriteLine($"OnDisconnected : {endPoint}");

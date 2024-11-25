@@ -273,6 +273,7 @@ namespace Server.Lobby
                 session.ServerState = PlayerServerState.ServerStateRoom;
                 Lobby.SessionsInRoom.Add(session, this);
                 enterPacket.Result = EnterRoomState.EnterRoomComplete;
+                RoomInfo.CurMembers++;
                 session.Send(enterPacket);
             }
             catch (Exception e)
@@ -331,6 +332,7 @@ namespace Server.Lobby
                 Lobby.SessionsInRoom.Remove(session);
 
             session.ServerState = PlayerServerState.ServerStateLobby;
+            RoomInfo.CurMembers--;
 
             UpdateInfo();
         }

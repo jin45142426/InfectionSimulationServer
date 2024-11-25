@@ -29,6 +29,25 @@ namespace Server
 			}
 		}
 
+		/// <summary>
+		/// 이미 로그인 중인 id일 경우 true
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns></returns>
+		public bool CheckUsingId(string id)
+		{
+            lock (_lock)
+            {
+                foreach (var session in _sessions.Values)
+                {
+                    if (session.AccountDbId == id)
+                        return true;
+                }
+
+                return false;
+            }
+        }
+
 		public ClientSession Find(int id)
 		{
 			lock (_lock)

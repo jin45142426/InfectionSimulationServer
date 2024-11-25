@@ -99,12 +99,12 @@ namespace Server
                     }
 
                     // 이미 로그인 중인 Id일 경우
-                    //if (SessionManager.Instance.CheckUsingId(account.Id))
-                    //{
-                    //    loginPacket.Result = LoginState.AlreadyLogin;
-                    //    Send(loginPacket);
-                    //    return;
-                    //}
+                    if (SessionManager.Instance.CheckUsingId(account.Id))
+                    {
+                        loginPacket.Result = LoginState.AlreadyLogin;
+                        Send(loginPacket);
+                        return;
+                    }
 
                     // 로그인 성공
                     AccountDbId = account.Id; // 세션에 계정 DB ID 저장

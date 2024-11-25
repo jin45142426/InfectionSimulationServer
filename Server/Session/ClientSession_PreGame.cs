@@ -98,21 +98,10 @@ namespace Server
                         return;
                     }
 
-                    //GameRoom room = RoomManager.Instance.Find(1);
-
-                    //foreach(var player in room.Players.Values)
+                    // 이미 로그인 중인 Id일 경우
+                    //if (SessionManager.Instance.CheckUsingId(account.Id))
                     //{
-                    //    if(player.Position == position)
-                    //    {
-                    //        loginPacket.Result = LoginState.DuplicationPosition;
-                    //        Send(loginPacket);
-                    //        return;
-                    //    }
-                    //}
-
-                    //if (room.DoingScenario)
-                    //{
-                    //    loginPacket.Result = LoginState.AlreadyStart;
+                    //    loginPacket.Result = LoginState.AlreadyLogin;
                     //    Send(loginPacket);
                     //    return;
                     //}
@@ -127,25 +116,6 @@ namespace Server
 
                     Program.Lobby.EnterLobby(this);
                     return;
-
-                    //Player myPlayer = ObjectManager.Instance.Add<Player>();
-                    //{
-                    //    MyPlayer = myPlayer;
-                    //    myPlayer.Room = room;
-                    //    myPlayer.MoveInfo = new MoveInfo();
-                    //    myPlayer.MoveInfo.State = CreatureState.Idle;
-                    //    myPlayer.MoveInfo.DirX = 0;
-                    //    myPlayer.MoveInfo.DirZ = 0;
-                    //    myPlayer.MoveInfo.InputBit = 0;
-                    //    myPlayer.PosInfo.PosX = 0;
-                    //    myPlayer.PosInfo.PosY = 0;
-                    //    myPlayer.PosInfo.PosX = 0;
-                    //    myPlayer.UserInfo.Position = position;
-                    //    myPlayer.UserInfo.AccountId = accountId;
-                    //    myPlayer.Session = this;
-                    //}
-
-                    //room.Push(room.EnterGame, myPlayer);
                 }
             }
             catch(Exception ex)

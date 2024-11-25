@@ -43,10 +43,11 @@ namespace Server
 
 		public override void OnDisconnected(EndPoint endPoint)
 		{
-			GameRoom room = RoomManager.Instance.Find(1);
-
 			if(MyPlayer != null)
+			{
+                GameRoom room = RoomManager.Instance.Find(MyPlayer.Room.RoomId);
 				room.Push(room.LeaveGame, MyPlayer.Info.ObjectId);
+            }
 
 			Program.Lobby.Disconnect(this);
 

@@ -103,18 +103,18 @@ namespace Google.Protobuf.Protocol {
             "RVJfU1RBVEVfTE9HSU4QABIWChJTRVJWRVJfU1RBVEVfTE9CQlkQARIVChFT",
             "RVJWRVJfU1RBVEVfUk9PTRACEhUKEVNFUlZFUl9TVEFURV9HQU1FEAMqSQoF",
             "U2NlbmUSDwoLTE9HSU5fU0NFTkUQABIPCgtMT0JCWV9TQ0VORRABEg4KClJP",
-            "T01fU0NFTkUQAhIOCgpHQU1FX1NDRU5FEAMqggEKCkxvZ2luU3RhdGUSDgoK",
-            "Tk9fQUNDT1VOVBAAEhIKDldST05HX1BBU1NXT1JEEAESEgoOTE9HSU5fQ09N",
-            "UExFVEUQAhIRCg1BTFJFQURZX1NUQVJUEAMSGAoURFVQTElDQVRJT05fUE9T",
-            "SVRJT04QBBIPCgtMT0dJTl9FUlJPUhAFKmAKElJlZ2lzdEFjY291bnRTdGF0",
-            "ZRIQCgxFWElTVF9QTEFZRVIQABIRCg1FWElTVF9BQ0NPVU5UEAESEwoPUkVH",
-            "SVNUX0NPTVBMRVRFEAISEAoMUkVHSVNUX0VSUk9SEAMqTQoNTWFrZVJvb21T",
-            "dGF0ZRIPCgtFWElTVF9USVRMRRAAEhYKEk1BS0VfUk9PTV9DT01QTEVURRAB",
-            "EhMKD01BS0VfUk9PTV9FUlJPUhACKnEKDkVudGVyUm9vbVN0YXRlEhAKDEZV",
-            "TExfTUVNQkVSUxAAEhYKEklOQ09SUkVDVF9QQVNTV09SRBABEgsKB05PX1JP",
-            "T00QAhIXChNFTlRFUl9ST09NX0NPTVBMRVRFEAMSDwoLRU5URVJfRVJST1IQ",
-            "BCoxCg5HYW1lT2JqZWN0VHlwZRIICgROb25lEAASCgoGUGxheWVyEAESCQoF",
-            "Tl9QX0MQAkIbqgIYR29vZ2xlLlByb3RvYnVmLlByb3RvY29sYgZwcm90bzM="));
+            "T01fU0NFTkUQAhIOCgpHQU1FX1NDRU5FEAMqaAoKTG9naW5TdGF0ZRIOCgpO",
+            "T19BQ0NPVU5UEAASEgoOV1JPTkdfUEFTU1dPUkQQARISCg5MT0dJTl9DT01Q",
+            "TEVURRACEhEKDUFMUkVBRFlfTE9HSU4QAxIPCgtMT0dJTl9FUlJPUhAEKmAK",
+            "ElJlZ2lzdEFjY291bnRTdGF0ZRIQCgxFWElTVF9QTEFZRVIQABIRCg1FWElT",
+            "VF9BQ0NPVU5UEAESEwoPUkVHSVNUX0NPTVBMRVRFEAISEAoMUkVHSVNUX0VS",
+            "Uk9SEAMqTQoNTWFrZVJvb21TdGF0ZRIPCgtFWElTVF9USVRMRRAAEhYKEk1B",
+            "S0VfUk9PTV9DT01QTEVURRABEhMKD01BS0VfUk9PTV9FUlJPUhACKnEKDkVu",
+            "dGVyUm9vbVN0YXRlEhAKDEZVTExfTUVNQkVSUxAAEhYKEklOQ09SUkVDVF9Q",
+            "QVNTV09SRBABEgsKB05PX1JPT00QAhIXChNFTlRFUl9ST09NX0NPTVBMRVRF",
+            "EAMSDwoLRU5URVJfRVJST1IQBCoxCg5HYW1lT2JqZWN0VHlwZRIICgROb25l",
+            "EAASCgoGUGxheWVyEAESCQoFTl9QX0MQAkIbqgIYR29vZ2xlLlByb3RvYnVm",
+            "LlByb3RvY29sYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.PlayerServerState), typeof(global::Google.Protobuf.Protocol.Scene), typeof(global::Google.Protobuf.Protocol.LoginState), typeof(global::Google.Protobuf.Protocol.RegistAccountState), typeof(global::Google.Protobuf.Protocol.MakeRoomState), typeof(global::Google.Protobuf.Protocol.EnterRoomState), typeof(global::Google.Protobuf.Protocol.GameObjectType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -249,9 +249,8 @@ namespace Google.Protobuf.Protocol {
     [pbr::OriginalName("NO_ACCOUNT")] NoAccount = 0,
     [pbr::OriginalName("WRONG_PASSWORD")] WrongPassword = 1,
     [pbr::OriginalName("LOGIN_COMPLETE")] LoginComplete = 2,
-    [pbr::OriginalName("ALREADY_START")] AlreadyStart = 3,
-    [pbr::OriginalName("DUPLICATION_POSITION")] DuplicationPosition = 4,
-    [pbr::OriginalName("LOGIN_ERROR")] LoginError = 5,
+    [pbr::OriginalName("ALREADY_LOGIN")] AlreadyLogin = 3,
+    [pbr::OriginalName("LOGIN_ERROR")] LoginError = 4,
   }
 
   public enum RegistAccountState {

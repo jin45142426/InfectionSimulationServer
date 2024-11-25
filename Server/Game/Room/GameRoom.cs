@@ -109,6 +109,7 @@ namespace Server.Game
 
 				player.Room = null;
 				player.Session.ServerState = PlayerServerState.ServerStateLobby;
+				Program.Lobby.SessionsInLobby.Add(player.Session);
 				player.Session.MyPlayer = null;
 
 				// 본인한테 정보 전송

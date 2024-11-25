@@ -1,6 +1,7 @@
 ﻿using Google.Protobuf;
 using Google.Protobuf.Protocol;
 using Server.Game;
+using ServerCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Server.Lobby
     {
         List<ClientSession> Sessions = new List<ClientSession>();
         public Dictionary<string, Room> Rooms = new Dictionary<string, Room>();
+        public List<ClientSession> SessionsInLobby = new List<ClientSession>();
         public Dictionary<ClientSession, Room> SessionsInRoom = new Dictionary<ClientSession, Room>();
 
         public override void Update()
@@ -23,6 +25,7 @@ namespace Server.Lobby
         public void EnterLobby(ClientSession session)
         {
             Sessions.Add(session);
+            SessionsInLobby.Add(session);
             session.ServerState = PlayerServerState.ServerStateLobby;
         }
 
@@ -37,9 +40,15 @@ namespace Server.Lobby
                 {
                     case Scene.LoginScene:
                         session.ServerState = PlayerServerState.ServerStateLogin;
+
+                        if (SessionsInLobby.Contains(session))
+                            SessionsInLobby.Remove(session);
                         break;
                     case Scene.RoomScene:
                         session.ServerState = PlayerServerState.ServerStateRoom;
+
+                        if (SessionsInLobby.Contains(session))
+                            SessionsInLobby.Remove(session);
                         break;
                     default:
                         return;
@@ -59,8 +68,22 @@ namespace Server.Lobby
                 room.LeaveRoom(session);
             }
 
+            if (SessionsInLobby.Contains(session))
+                SessionsInLobby.Remove(session);
+
             if (Sessions.Contains(session))
                 Sessions.Remove(session);
+        }
+
+        public void SendRoomListAll()
+        {
+            S_RoomList roomPacket = new S_RoomList();
+            foreach (var room in Rooms.Values)
+            {
+                roomPacket.Rooms.Add(room.RoomInfo);
+            }
+
+            Broadcast(roomPacket, SessionsInLobby);
         }
 
         public void SendRoomList(ClientSession session)
@@ -97,6 +120,18 @@ namespace Server.Lobby
             foreach (var s in Sessions)
             {
                 s.Send(packet);
+            }
+        }
+
+        void Broadcast(IMessage packet, List<ClientSession> sessions)
+        {
+            if (sessions.Count <= 0)
+                return;
+
+            foreach(var session in sessions)
+            {
+                if (session != null)
+                    session.Send(packet);
             }
         }
 
@@ -153,10 +188,13 @@ namespace Server.Lobby
                 room.sessions[0] = clientSession;
                 room.Maker = clientSession;
                 room.Lobby = this;
+                room.RoomInfo.CurMembers++;
 
                 serverPacket.Result = MakeRoomState.MakeRoomComplete;
                 clientSession.Send(serverPacket);
                 clientSession.ServerState = PlayerServerState.ServerStateRoom;
+                if (SessionsInLobby.Contains(clientSession))
+                    SessionsInLobby.Remove(clientSession);
                 return;
             }
             catch (Exception e)
@@ -272,6 +310,10 @@ namespace Server.Lobby
 
                 session.ServerState = PlayerServerState.ServerStateRoom;
                 Lobby.SessionsInRoom.Add(session, this);
+                
+                if (Lobby.SessionsInLobby.Contains(session))
+                    Lobby.SessionsInLobby.Remove(session);
+
                 enterPacket.Result = EnterRoomState.EnterRoomComplete;
                 RoomInfo.CurMembers++;
                 session.Send(enterPacket);
@@ -308,7 +350,9 @@ namespace Server.Lobby
                         {
                             if(Lobby.SessionsInRoom.ContainsKey(s))
                                 Lobby.SessionsInRoom.Remove(s);
+
                             s.ServerState = PlayerServerState.ServerStateLobby;
+                            Lobby.SessionsInLobby.Add(s);
                         }
                     }
                 }
@@ -332,6 +376,7 @@ namespace Server.Lobby
                 Lobby.SessionsInRoom.Remove(session);
 
             session.ServerState = PlayerServerState.ServerStateLobby;
+            Lobby.SessionsInLobby.Add(session);
             RoomInfo.CurMembers--;
 
             UpdateInfo();

@@ -40,6 +40,8 @@ namespace Server.Lobby
                 {
                     case Scene.LoginScene:
                         session.ServerState = PlayerServerState.ServerStateLogin;
+                        session.AccountDbId = null;
+                        session.AccountDbName = null;
 
                         if (SessionsInLobby.Contains(session))
                             SessionsInLobby.Remove(session);

@@ -13,8 +13,8 @@ namespace Server
 {
     public partial class ClientSession : PacketSession
     {
-        public string AccountDbId { get; private set; }
-        public string AccountDbName { get; private set; }
+        public string AccountDbId { get; set; }
+        public string AccountDbName { get; set; }
 
         // 계정 생성 및 플레이어 등록 처리
         public void HandleRegistAccount(string accountId, string accountPw, string userName)

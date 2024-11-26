@@ -38,6 +38,8 @@ namespace Server.Game
 			{
 				_scenarioSyncCounter++;
 			}
+
+			CheckComplete();
         }
 
         public void EnterGame(GameObject gameObject)
@@ -246,6 +248,17 @@ namespace Server.Game
             }
         }
 
+		void CheckComplete()
+		{
+            if (CompleteCount >= Players.Count)
+            {
+                S_NextProgress processPacket = new S_NextProgress();
+                processPacket.Progress = ++ScenarioProgress;
+                BroadcastAll(processPacket);
+                CompleteCount = 0;
+            }
+        }
+
 		public void HandleTalk(Player player, C_Talk talkPacket)
         {
 			if (player == null)
@@ -305,5 +318,18 @@ namespace Server.Game
 				p.Session.Send(packet);
 			}
 		}
+
+        public void BroadcastAll(IMessage packet)
+        {
+			Dictionary<int, Player> players = new Dictionary<int, Player>(Players);
+
+            foreach (Player p in players.Values)
+            {
+                if (p != null)
+                {
+					p.Session.Send(packet);
+                }
+            }
+        }
     }
 }

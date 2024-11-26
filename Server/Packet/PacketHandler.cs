@@ -247,6 +247,6 @@ class PacketHandler
         if (room == null)
             return;
 
-        room.Push(room.HandleEndGame, clientSession.MyPlayer, scenarioPacket);
+        room.Push(room.HandleExitGame, clientSession.MyPlayer, scenarioPacket);
     }
 }

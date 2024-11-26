@@ -2,6 +2,7 @@
 using Google.Protobuf.Protocol;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Server.Game
@@ -274,7 +275,7 @@ namespace Server.Game
 			LeaveGame(player.ObjectId);
         }
 
-        public void HandleExitGame(Player player, C_EndGame game)
+        public void HandleExitGame(Player player, C_ExitGame game)
         {
             if (player == null)
                 return;

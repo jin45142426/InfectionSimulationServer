@@ -20,6 +20,8 @@ namespace Server.Lobby
         public override void Update()
         {
             base.Update();
+
+            SendRoomListAll();
         }
 
         public void EnterLobby(ClientSession session)

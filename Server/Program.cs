@@ -63,7 +63,7 @@ namespace Server
             while (true)
             {
                 Lobby.Update();
-                Thread.Sleep(100);
+                Thread.Sleep(200);
             }
         }
     }

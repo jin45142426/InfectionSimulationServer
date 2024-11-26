@@ -52,7 +52,7 @@ namespace Server
         static void Main(string[] args)
         {
             string host = Dns.GetHostName();
-            IPAddress ipAddr = IPAddress.Parse("220.69.209.153");
+            IPAddress ipAddr = IPAddress.Parse("0.0.0.0");
             IPEndPoint endPoint = new IPEndPoint(ipAddr, 7777);
 
             _listener.Init(endPoint, () => { return SessionManager.Instance.Generate(); });

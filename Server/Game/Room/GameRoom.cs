@@ -13,6 +13,7 @@ namespace Server.Game
 		public int ScenarioProgress { get; set; } = 0;
 		public string ScenarioName { get; set; }
 		public int CompleteCount { get; set; } = 0;
+		public bool UsingNPC { get; set; } = true;
 
 		public bool DoingScenario = false;
 
@@ -205,18 +206,23 @@ namespace Server.Game
 			this.ScenarioProgress = 0;
 			this.CompleteCount = 0;
 
-			List<string> lackPositions = new List<string>(DataManager.Positions);
-			foreach(var p in Players.Values)
+            S_StartScenario startPacket = new S_StartScenario();
+
+            if (UsingNPC)
 			{
-                if (lackPositions.Contains(p.Position))
-				{
-					lackPositions.Remove(p.Position);
-				}
+                List<string> lackPositions = new List<string>(DataManager.Positions);
+
+                foreach (var p in Players.Values)
+                {
+                    if (lackPositions.Contains(p.Position))
+                    {
+                        lackPositions.Remove(p.Position);
+                    }
+                }
+                startPacket.LackPositions.AddRange(lackPositions);
             }
 
-            S_StartScenario startPacket = new S_StartScenario();
             startPacket.ScenarioName = ScenarioName;
-			startPacket.LackPositions.AddRange(lackPositions);
 
             Broadcast(startPacket);
 

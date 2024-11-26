@@ -230,6 +230,6 @@ class PacketHandler
 
         ClientSession clientSession = (ClientSession)session;
 
-        Program.Lobby.Push(Program.Lobby.StartSimulation, clientSession);
+        Program.Lobby.Push(Program.Lobby.StartSimulation, clientSession, roomPacket);
     }
 }

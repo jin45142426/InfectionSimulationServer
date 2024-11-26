@@ -242,7 +242,7 @@ namespace Server.Lobby
             room.ChangePosition(session, packet);
         }
 
-        public void StartSimulation(ClientSession session)
+        public void StartSimulation(ClientSession session, C_StartSimulation packet)
         {
             if (session == null)
                 return;
@@ -250,7 +250,7 @@ namespace Server.Lobby
             if (!SessionsInRoom.TryGetValue(session, out var room))
                 return;
 
-            room.StartSimulation(session);
+            room.StartSimulation(session, packet);
         }
 
         #endregion
@@ -443,10 +443,11 @@ namespace Server.Lobby
             }
         }
 
-        public void StartSimulation(ClientSession session)
+        public void StartSimulation(ClientSession session, C_StartSimulation packet)
         {
             GameRoom room = RoomManager.Instance.Add();
             room.ScenarioName = RoomInfo.Disease;
+            room.UsingNPC = packet.UsingNPC;
 
             for(int i = 0; i < sessions.Length; i++)
             {

@@ -132,7 +132,9 @@ namespace Server.Lobby
             if (sessions.Count <= 0)
                 return;
 
-            foreach(var session in sessions)
+            List<ClientSession> copy = new List<ClientSession>(sessions);
+
+            foreach(var session in copy)
             {
                 if (session != null)
                     session.Send(packet);

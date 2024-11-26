@@ -232,4 +232,21 @@ class PacketHandler
 
         Program.Lobby.Push(Program.Lobby.StartSimulation, clientSession, roomPacket);
     }
+
+    public static void C_ExitGameHandler(PacketSession session, IMessage packet)
+    {
+        C_ExitGame scenarioPacket = (C_ExitGame)packet;
+
+        ClientSession clientSession = (ClientSession)session;
+
+        Player player = clientSession.MyPlayer;
+        if (player == null)
+            return;
+
+        GameRoom room = player.Room;
+        if (room == null)
+            return;
+
+        room.Push(room.HandleEndGame, clientSession.MyPlayer, scenarioPacket);
+    }
 }

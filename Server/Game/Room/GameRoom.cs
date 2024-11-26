@@ -274,6 +274,14 @@ namespace Server.Game
 			LeaveGame(player.ObjectId);
         }
 
+        public void HandleExitGame(Player player, C_EndGame game)
+        {
+            if (player == null)
+                return;
+
+            LeaveGame(player.ObjectId);
+        }
+
         public Player FindPlayer(Func<GameObject, bool> condition)
 		{
 			foreach (Player player in Players.Values)

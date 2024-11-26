@@ -58,7 +58,7 @@ namespace Server
                 // 해당 플레이어의 특정 Position에 대한 모든 점수를 조회
                 var scores = db.Scores
                     .Include(s => s.Account)
-                    .Where(s => s.AccountId == accountId && s.Position == position)
+                    .Where(s => s.Position == position)
                     .OrderByDescending(s => s.GameDate)  // 날짜 순서대로 정렬
                     .ToList();
 

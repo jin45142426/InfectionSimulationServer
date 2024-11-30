@@ -54,6 +54,8 @@ namespace Server
                     db.SaveChangesEx();
                     // 계정이 생성되었다고 패킷 보내기
                     Send(registPacket);
+
+                    Console.WriteLine($"신규 사용자 등록 : {accountId}");
                 }
             }
             catch (Exception ex)
@@ -115,6 +117,8 @@ namespace Server
                     Send(loginPacket);
 
                     Program.Lobby.EnterLobby(this);
+
+                    Console.WriteLine($"사용자 로비 입장 : {AccountDbId}");
                     return;
                 }
             }

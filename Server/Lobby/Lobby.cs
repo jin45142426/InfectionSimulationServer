@@ -41,12 +41,15 @@ namespace Server.Lobby
                 switch (packet.TargetScene)
                 {
                     case Scene.LoginScene:
+                        Console.WriteLine($"사용자 로그아웃 : {session.AccountDbId}");
+
                         session.ServerState = PlayerServerState.ServerStateLogin;
                         session.AccountDbId = null;
                         session.AccountDbName = null;
 
                         if (SessionsInLobby.Contains(session))
                             SessionsInLobby.Remove(session);
+
                         break;
                     case Scene.RoomScene:
                         session.ServerState = PlayerServerState.ServerStateRoom;
@@ -199,8 +202,11 @@ namespace Server.Lobby
                 serverPacket.Result = MakeRoomState.MakeRoomComplete;
                 clientSession.Send(serverPacket);
                 clientSession.ServerState = PlayerServerState.ServerStateRoom;
+
                 if (SessionsInLobby.Contains(clientSession))
                     SessionsInLobby.Remove(clientSession);
+
+                Console.WriteLine($"{clientSession.AccountDbId} 사용자 {room.RoomInfo.Title} 대기실 생성");
                 return;
             }
             catch (Exception e)
@@ -323,6 +329,8 @@ namespace Server.Lobby
                 enterPacket.Result = EnterRoomState.EnterRoomComplete;
                 RoomInfo.CurMembers++;
                 session.Send(enterPacket);
+
+                Console.WriteLine($"{session.AccountDbId} 사용자 {RoomInfo.Title} 대기실 입장");
             }
             catch (Exception e)
             {
@@ -366,6 +374,8 @@ namespace Server.Lobby
                 if(Lobby.Rooms.ContainsKey(RoomInfo.Title))
                     Lobby.Rooms.Remove(RoomInfo.Title);
 
+                Console.WriteLine($"대기실 삭제 : {RoomInfo.Title}");
+
                 return;
             }
 
@@ -384,6 +394,8 @@ namespace Server.Lobby
             session.ServerState = PlayerServerState.ServerStateLobby;
             Lobby.SessionsInLobby.Add(session);
             RoomInfo.CurMembers--;
+
+            Console.WriteLine($"{session.AccountDbId} 사용자가 {RoomInfo.Title} 대기실 퇴장");
 
             UpdateInfo();
         }
@@ -496,6 +508,8 @@ namespace Server.Lobby
 
             if (Lobby.Rooms.ContainsKey(RoomInfo.Title))
                 Lobby.Rooms.Remove(RoomInfo.Title);
+
+            Console.WriteLine($"{RoomInfo.Title} 대기실 {RoomInfo.Disease} 훈련 시작");
         }
     }
 }

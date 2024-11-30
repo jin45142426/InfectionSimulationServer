@@ -58,7 +58,7 @@ namespace Server
             _listener.Init(endPoint, () => { return SessionManager.Instance.Generate(); });
             Console.WriteLine("Listening...");
 
-            Profiling(3000);
+            //Profiling(3000);
 
             while (true)
             {
